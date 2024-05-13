@@ -9,20 +9,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
 
-      - name: Install dependencies
-        run: npm install
+    - name: Install dependencies
+      run: npm install
 
-      - name: Run code to update processing status
-        run: index.js # 여기에 자신의 스크립트 파일 이름을 입력하세요
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          HELPDESK_DATABASE_ID: ${{ secrets.HELPDESK_DATABASE_ID }}
-          PROCESSING_STATUS_DATABASE_ID: ${{ secrets.PROCESSING_STATUS_DATABASE_ID }}
+    - name: Run code to update processing status
+      run: node index.js # 여기에 자신의 스크립트 파일 이름을 입력하세요
+      env:
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        HELPDESK_DATABASE_ID: ${{ secrets.HELPDESK_DATABASE_ID }}
+        PROCESSING_STATUS_DATABASE_ID: ${{ secrets.PROCESSING_STATUS_DATABASE_ID }}
