@@ -18,30 +18,36 @@ async function updateProcessingStatus() {
             database_id: helpdeskDatabaseId,
         });
 
-    // 사용자별로 "상태" 속성의 "완료"값의 갯수를 계산합니다.
-    const processingStatusByUser = {};
-    response.results.forEach((page) => {
-        // 담당자 속성이 존재하는지 확인합니다.
-        if (page.properties.담당자) {
-            // 담당자가 있는 경우에만 처리합니다.
-            const userId = page.properties.담당자.people[0]?.id;
-            if (userId) {
-                if (!processingStatusByUser[userId]) {
-                    processingStatusByUser[userId] = 0;
+        // 현재 날짜를 가져옵니다.
+        const currentDate = new Date();
+        // 현재 연도와 월을 가져옵니다.
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth() + 1; // JavaScript의 getMonth()는 0부터 시작하므로 1을 더해줍니다.
+
+        // 사용자별로 "상태" 속성의 "완료"값의 갯수를 계산합니다.
+        const processingStatusByUser = {};
+        response.results.forEach((page) => {
+            // 담당자 속성이 존재하는지 확인합니다.
+            if (page.properties.담당자) {
+                // 담당자가 있는 경우에만 처리합니다.
+                const userId = page.properties.담당자.people[0]?.id;
+                if (userId) {
+                    if (!processingStatusByUser[userId]) {
+                        processingStatusByUser[userId] = 0;
+                    }
+                    
+                // "상태" 속성이 '완료'이고, "완료일" 속성이 현재 연도와 월에 속하는 경우에만 처리합니다.
+                const completionDate = new Date(page.properties.완료일.date.start); // 날짜 파싱
+                const completionYear = completionDate.getFullYear();
+                const completionMonth = completionDate.getMonth() + 1;
+                if (page.properties.상태.select.name === '완료' &&
+                    completionYear === currentYear &&
+                    completionMonth === currentMonth) {
+                    processingStatusByUser[userId]++;
                 }
-                
-            // "상태" 속성이 '완료'이고, "완료일" 속성이 현재 연도와 월에 속하는 경우에만 처리합니다.
-            const completionDate = new Date(page.properties.완료일.date.start); // 날짜 파싱
-            const completionYear = completionDate.getFullYear();
-            const completionMonth = completionDate.getMonth() + 1;
-            if (page.properties.상태.select.name === '완료' &&
-                completionYear === currentYear &&
-                completionMonth === currentMonth) {
-                processingStatusByUser[userId]++;
+                }   
             }
-            }   
-        }
-    });
+        });
 
         // 사용자별 처리완료건수를 내림차순으로 정렬합니다.
         const sortedProcessingStatusByUser = Object.entries(processingStatusByUser)
