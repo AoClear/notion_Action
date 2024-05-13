@@ -36,15 +36,26 @@ async function updateProcessingStatus() {
                         processingStatusByUser[userId] = 0;
                     }
                     
-                // "상태" 속성이 '완료'이고, "완료일" 속성이 현재 연도와 월에 속하는 경우에만 처리합니다.
-                const completionDate = new Date(page.properties.완료일.date.start); // 날짜 파싱
-                const completionYear = completionDate.getFullYear();
-                const completionMonth = completionDate.getMonth() + 1;
-                if (page.properties.상태.select.name === '완료' &&
-                    completionYear === currentYear &&
-                    completionMonth === currentMonth) {
-                    processingStatusByUser[userId]++;
-                }
+                    // "상태" 속성이 '완료'이고, "완료일" 속성이 현재 연도와 월에 속하는 경우에만 처리합니다.
+                    const completionDate = page.properties.완료일?.date?.start ? new Date(page.properties.완료일.date.start) : null;
+                    // completionDate가 유효한 경우에만 처리를 진행합니다.
+                    if (!completionDate) {
+                        return; // 날짜가 null이거나 유효하지 않은 경우 함수 실행 종료
+                    }
+                    const parsedCompletionDate = new Date(completionDate);
+                    const completionYear = parsedCompletionDate.getFullYear();
+                    const completionMonth = parsedCompletionDate.getMonth() + 1;
+                    if (page.properties.상태.select.name === '완료' &&
+                        completionYear === currentYear &&
+                        completionMonth === currentMonth) {
+                        processingStatusByUser[userId]++;
+                    }
+
+                    //사원의 처리완료건수가 0이면 행에 추가하지 않습니다.
+                    if(processingStatusByUser[userId] == 0)
+                    {
+                        delete processingStatusByUser[userId];
+                    }
                 }   
             }
         });
