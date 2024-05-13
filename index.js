@@ -18,23 +18,24 @@ async function updateProcessingStatus() {
             database_id: helpdeskDatabaseId,
         });
 
-        // 사용자별로 "상태" 속성의 "완료"값의 갯수를 계산합니다.
-        const processingStatusByUser = {};
-        response.results.forEach((page) => {
-            // 담당자 속성이 존재하는지 확인합니다.
-            if (page.properties.담당자) {
-                // 담당자가 있는 경우에만 처리합니다.
-                const userId = page.properties.담당자.people[0]?.id;
-                if (userId) {
-                    if (!processingStatusByUser[userId]) {
-                        processingStatusByUser[userId] = 0;
-                    }
-                    if (page.properties.상태.select.name === '완료') {
-                        processingStatusByUser[userId]++;
-                    }
-                }   
-            }
-        });
+// 사용자별로 "상태" 속성의 "완료"값의 갯수를 계산합니다.
+const processingStatusByUser = {};
+    response.results.forEach((page) => {
+        // 담당자 속성이 존재하는지 확인합니다.
+        if (page.properties.담당자) {
+            // 담당자가 있는 경우에만 처리합니다.
+            const userId = page.properties.담당자.people[0]?.id;
+            if (userId) {
+                if (!processingStatusByUser[userId]) {
+                    processingStatusByUser[userId] = 0;
+                }
+                // "상태" 속성이 '완료'이고, "완료일" 속성이 5월인 경우에만 처리합니다.
+                if (page.properties.상태.select.name === '완료' && page.properties.완료일.date.start.includes('2024-05')) {
+                    processingStatusByUser[userId]++;
+                }
+            }   
+        }
+    });
 
         // 사용자별 처리완료건수를 내림차순으로 정렬합니다.
         const sortedProcessingStatusByUser = Object.entries(processingStatusByUser)
