@@ -14,8 +14,13 @@ const processingStatusDatabaseId = process.env.PROCESSING_STATUS_DATABASE_ID;
 async function updateProcessingStatus() {
     try {
         // "헬프데스크" 데이터베이스에서 필요한 정보를 가져옵니다.
-        const response = await notion.databases.query({
+        const helpDeskResponse = await notion.databases.query({
             database_id: helpdeskDatabaseId,
+        });
+
+         // "사원별 처리완료 건" 데이터베이스에서 필요한 정보를 가져옵니다.
+        const processingStatusResponse = await notion.databases.query({
+            database_id: processingStatusDatabaseId,
         });
 
         // 현재 날짜를 가져옵니다.
@@ -26,7 +31,7 @@ async function updateProcessingStatus() {
 
         // 사용자별로 "상태" 속성의 "완료"값의 갯수를 계산합니다.
         const processingStatusByUser = {};
-        response.results.forEach((page) => {
+        helpDeskResponse.results.forEach((page) => {
             // 담당자 속성이 존재하는지 확인합니다.
             if (page.properties.담당자) {
                 // 담당자가 있는 경우에만 처리합니다.
@@ -52,7 +57,7 @@ async function updateProcessingStatus() {
                     }
 
                     //사원의 처리완료건수가 0이면 행에 추가하지 않습니다.
-                    if(processingStatusByUser[userId] == 0)
+                    if(processingStatusByUser[userId] === 0)
                     {
                         delete processingStatusByUser[userId];
                     }
@@ -69,10 +74,7 @@ async function updateProcessingStatus() {
             }, {});
 
         // "사원별 처리완료 건" 데이터베이스를 전부 삭제합니다.
-        const pagesResponse = await notion.databases.query({
-            database_id: processingStatusDatabaseId,
-        });
-        for (const page of pagesResponse.results) {
+        for (const page of processingStatusResponse.results) {
             await notion.pages.update({
                 page_id: page.id,
                 archived: true, // 페이지를 보관 상태로 변경하여 삭제합니다.
