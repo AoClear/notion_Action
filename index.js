@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express');
 const { Client } = require('@notionhq/client');
 
@@ -24,22 +25,47 @@ async function updateProcessingStatus() {
         // 사용자별로 "상태" 속성의 "완료"값의 갯수를 계산합니다.
         const processingStatusByUser = {};
         response.results.forEach((page) => {
-            const userId = page.properties.담당자.people[0].id;
-            if (!processingStatusByUser[userId]) {
-                processingStatusByUser[userId] = 0;
-            }
-            if (page.properties.상태.select.name === '완료') {
-                processingStatusByUser[userId]++;
+            // 담당자 속성이 존재하는지 확인합니다.
+            if (page.properties.담당자) {
+                // 담당자가 있는 경우에만 처리합니다.
+                const userId = page.properties.담당자.people[0]?.id;
+                if (userId) {
+                    if (!processingStatusByUser[userId]) {
+                        processingStatusByUser[userId] = 0;
+                }
+                if (page.properties.상태.select.name === '완료') {
+                    processingStatusByUser[userId]++;
+                }
+                }   
             }
         });
 
-        // "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
-        for (const userId in processingStatusByUser) {
+        // 사용자별 처리완료건수를 내림차순으로 정렬합니다.
+        const sortedProcessingStatusByUser = Object.entries(processingStatusByUser)
+            .sort(([, countA], [, countB]) => countA - countB)
+            .reduce((acc, [userId, count]) => {
+                acc[userId] = count;
+                return acc;
+            }, {});
+
+        // "사원별 처리완료 건" 데이터베이스를 전부 삭제합니다.
+        const pagesResponse = await notion.databases.query({
+            database_id: processingStatusDatabaseId,
+        });
+        for (const page of pagesResponse.results) {
+            await notion.pages.update({
+                page_id: page.id,
+                archived: true, // 페이지를 보관 상태로 변경하여 삭제합니다.
+            });
+        }
+
+         // 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
+        for (const userId in sortedProcessingStatusByUser) {
             await notion.pages.create({
                 parent: { database_id: processingStatusDatabaseId },
                 properties: {
                     사원: { people: [{ id: userId }] },
-                    처리완료건수: { number: processingStatusByUser[userId] },
+                    처리완료건수: { number: sortedProcessingStatusByUser[userId] },
                 },
             });
         }
@@ -50,12 +76,16 @@ async function updateProcessingStatus() {
     }
 }
 
-// "프로세스 상태 업데이트"를 위한 엔드포인트를 정의합니다.
-app.get('/update-processing-status', async (req, res) => {
-    // 처리 완료 상태를 업데이트합니다.
-    await updateProcessingStatus();
-    res.send('Processing status update initiated.');
-});
+async function run() {
+    try {
+      await updateProcessingStatus();
+      console.log('Processing status run successfully.');
+    } catch (error) {
+      console.error('Error updating run status:', error);
+    }
+}
+  
+run();
 
 // 미들웨어를 등록합니다.
 app.use(express.json());
