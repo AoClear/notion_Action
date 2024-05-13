@@ -61,7 +61,7 @@ async function updateProcessingStatus() {
                     }
                     
                     // completionDate가 유효한 경우에만 처리를 진행합니다.
-                    const completionDate = page.properties.완료일?.date?.start ? new Date(page.properties.완료일.date.start) : null;
+                    const completionDate = page.properties.완료일.date?.start ? new Date(page.properties.완료일.date.start) : null;
                     if (!completionDate) {
                         return; // 날짜가 null이거나 유효하지 않은 경우 함수 실행 종료
                     }
@@ -85,8 +85,8 @@ async function updateProcessingStatus() {
                 }   
         });
 
-        // 사용자별 처리완료건수를 내림차순으로 정렬합니다.
-        const sortedtotalProcessingStatusByUser = Object.entries(totalProcessingStatusByUser)
+        // 사용자별 이번 달 처리완료건수를 내림차순으로 정렬합니다.
+        const sortedProcessingStatusByUserInMonth = Object.entries(processingStatusByUserInMonth)
             .sort(([, countA], [, countB]) => countA - countB)
             .reduce((acc, [userId, count]) => {
                 acc[userId] = count;
@@ -102,13 +102,13 @@ async function updateProcessingStatus() {
         }
 
         // 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
-        for (const userId in sortedtotalProcessingStatusByUser) {
+        for (const userId in sortedProcessingStatusByUserInMonth) {
             await notion.pages.create({
                 parent: { database_id: processingStatusDatabaseId },
                 properties: {
                     사원: { people: [{ id: userId }] },
-                    "이번 달 처리완료건": { number: processingStatusByUserInMonth[userId] },
-                    "누적 처리완료 건": { number: sortedtotalProcessingStatusByUser[userId] },
+                    "이번 달 처리완료건": { number: sortedProcessingStatusByUserInMonth[userId] },
+                    "누적 처리완료 건": { number: totalProcessingStatusByUser[userId] },
                 },
             });
         }
