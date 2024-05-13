@@ -1,9 +1,5 @@
-require("dotenv").config()
-const express = require('express');
+require("dotenv").config();
 const { Client } = require('@notionhq/client');
-
-const app = express();
-const port = 3000;
 
 // Notion API를 초기화합니다.
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -32,10 +28,10 @@ async function updateProcessingStatus() {
                 if (userId) {
                     if (!processingStatusByUser[userId]) {
                         processingStatusByUser[userId] = 0;
-                }
-                if (page.properties.상태.select.name === '완료') {
-                    processingStatusByUser[userId]++;
-                }
+                    }
+                    if (page.properties.상태.select.name === '완료') {
+                        processingStatusByUser[userId]++;
+                    }
                 }   
             }
         });
@@ -59,7 +55,7 @@ async function updateProcessingStatus() {
             });
         }
 
-         // 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
+        // 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
         for (const userId in sortedProcessingStatusByUser) {
             await notion.pages.create({
                 parent: { database_id: processingStatusDatabaseId },
@@ -78,19 +74,11 @@ async function updateProcessingStatus() {
 
 async function run() {
     try {
-      await updateProcessingStatus();
-      console.log('Processing status run successfully.');
+        await updateProcessingStatus();
+        console.log('Processing status run successfully.');
     } catch (error) {
-      console.error('Error updating run status:', error);
+        console.error('Error updating run status:', error);
     }
 }
   
 run();
-
-// 미들웨어를 등록합니다.
-app.use(express.json());
-
-// 서버를 시작합니다.
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
