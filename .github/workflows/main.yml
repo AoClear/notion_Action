@@ -2,7 +2,7 @@ name: Update Processing Status
 
 on:
   schedule:
-    - cron: '40 0 * * *' 
+    - cron: '43 0 * * *' 
     
 jobs:
   build:
