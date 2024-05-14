@@ -2,8 +2,8 @@ name: Update Processing Status
 
 on:
   schedule:
-    - cron: '12 18 * * *' 
-
+    - cron: '40 0 * * *' 
+    
 jobs:
   build:
     runs-on: ubuntu-latest
