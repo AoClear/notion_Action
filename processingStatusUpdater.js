@@ -30,8 +30,8 @@ class ProcessingStatusUpdater {
 
     // "사원별 처리완료 건" 데이터베이스의 제목을 이번 달에 맞게 수정합니다.
     if (!processingStatusInfo.title[0].plain_text.includes(currentMonth)) {
-      await notion.databases.update({
-        database_id: processingStatusDatabaseId,
+      await this.notion.databases.update({
+        database_id: this.processingStatusDatabaseId,
         title: [
           {
             type: "text",
@@ -55,7 +55,7 @@ class ProcessingStatusUpdater {
           processingStatusByUserInMonth[userId] = 0;
         }
 
-        // completionDate가 유효한 경우에만 처리를 진행합니다.
+        // completionDate가 유효한 경우(또는 공백이 아닌경우)에만 처리를 진행합니다.
         const completionDate = page.properties.완료일.date?.start
           ? new Date(page.properties.완료일.date.start)
           : null;
@@ -95,7 +95,7 @@ class ProcessingStatusUpdater {
 
     // "사원별 처리완료 건" 데이터베이스를 전부 삭제합니다.
     for (const page of processingStatusResponse.results) {
-      await notion.pages.update({
+      await this.notion.pages.update({
         page_id: page.id,
         archived: true, // 페이지를 보관 상태로 변경하여 삭제합니다.
       });
@@ -103,8 +103,8 @@ class ProcessingStatusUpdater {
 
     // 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
     for (const userId in sortedProcessingStatusByUserInMonth) {
-      await notion.pages.create({
-        parent: { database_id: processingStatusDatabaseId },
+      await this.notion.pages.create({
+        parent: { database_id: this.processingStatusDatabaseId },
         properties: {
           사원: { people: [{ id: userId }] },
           "이번 달 처리완료건": {
@@ -130,3 +130,5 @@ class ProcessingStatusUpdater {
     }
   }
 }
+
+module.exports = ProcessingStatusUpdater;
