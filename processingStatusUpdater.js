@@ -22,7 +22,6 @@ class ProcessingStatusUpdater {
         database_id: this.processingStatusDatabaseId,
       });
 
-
     // 현재 날짜를 가져옵니다.
     const currentDate = new Date();
     // 현재 연도와 월을 가져옵니다.
