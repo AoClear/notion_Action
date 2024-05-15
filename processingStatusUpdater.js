@@ -28,15 +28,16 @@ class ProcessingStatusUpdater {
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth() + 1; // JavaScript의 getMonth()는 0부터 시작하므로 1을 더해줍니다.
 
+    const title = currentMonth + "월 사원별 처리완료 건";
     // "사원별 처리완료 건" 데이터베이스의 제목을 이번 달에 맞게 수정합니다.
-    if (!processingStatusInfo.title[0].plain_text.includes(currentMonth)) {
+    if (processingStatusInfo.title[0].plain_text !== title) {
       await this.notion.databases.update({
         database_id: this.processingStatusDatabaseId,
         title: [
           {
             type: "text",
             text: {
-              content: currentMonth + "월 사원별 처리완료 건",
+              content: title,
             },
           },
         ],
