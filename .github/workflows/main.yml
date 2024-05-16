@@ -2,7 +2,7 @@ name: Update Processing Status
 
 on:
   schedule:
-    - cron: '*/1 * * * *' # 매분마다 실행
+    - cron: '*/5 * * * *' # 매분마다 실행
 
 # on:
 #   schedule:
