@@ -1,26 +1,32 @@
 require("dotenv").config();
 const { Client } = require("@notionhq/client");
 
-class ProcessingStatusUpdater {
-  constructor() {
-    this.notion = new Client({ auth: process.env.NOTION_TOKEN });
-    this.helpdeskDatabaseId = process.env.HELPDESK_DATABASE_ID;
-    this.processingStatusDatabaseId = process.env.PROCESSING_STATUS_DATABASE_ID;
-  }
+// Notion API를 초기화합니다.
+const notion = new Client({ auth: process.env.NOTION_TOKEN });
 
-  async updateProcessingStatus() {
-    try {
-      const helpDeskResponse = await this.notion.databases.query({
-        database_id: this.helpdeskDatabaseId,
-      });
+// "헬프데스크" 데이터베이스의 ID
+const helpdeskDatabaseId = process.env.HELPDESK_DATABASE_ID;
 
-      const processingStatusResponse = await this.notion.databases.query({
-        database_id: this.processingStatusDatabaseId,
-      });
+// "사원별 처리완료 건" 데이터베이스의 ID
+const processingStatusDatabaseId = process.env.PROCESSING_STATUS_DATABASE_ID;
 
-      const processingStatusInfo = await this.notion.databases.retrieve({
-        database_id: this.processingStatusDatabaseId,
-      });
+// 사용자별로 "상태" 속성의 "완료"값의 갯수를 가져와서 "사원별 처리완료 건" 데이터베이스에 자동으로 기입하는 함수
+async function updateProcessingStatus() {
+  try {
+    // "헬프데스크" 데이터베이스에서 행 정보를 가져옵니다.
+    const helpDeskResponse = await notion.databases.query({
+      database_id: helpdeskDatabaseId,
+    });
+
+    // "사원별 처리완료 건" 데이터베이스에서 행 정보를 가져옵니다.
+    const processingStatusResponse = await notion.databases.query({
+      database_id: processingStatusDatabaseId,
+    });
+
+    // 데이터베이스의 메타데이터를 쿼리하여 가져옵니다.
+    const processingStatusInfo = await notion.databases.retrieve({
+      database_id: processingStatusDatabaseId,
+    });
 
     // 현재 날짜를 가져옵니다.
     const currentDate = new Date();
@@ -30,9 +36,9 @@ class ProcessingStatusUpdater {
 
     const title = currentMonth + "월 사원별 처리완료 건";
     // "사원별 처리완료 건" 데이터베이스의 제목을 이번 달에 맞게 수정합니다.
-    if (processingStatusInfo.title[0].plain_text !== title) {
-      await this.notion.databases.update({
-        database_id: this.processingStatusDatabaseId,
+    if (!processingStatusInfo.title[0].plain_text.includes(currentMonth)) {
+      await notion.databases.update({
+        database_id: processingStatusDatabaseId,
         title: [
           {
             type: "text",
@@ -56,7 +62,7 @@ class ProcessingStatusUpdater {
           processingStatusByUserInMonth[userId] = 0;
         }
 
-        // completionDate가 유효한 경우(또는 공백이 아닌경우)에만 처리를 진행합니다.
+        // completionDate가 유효한 경우에만 처리를 진행합니다.
         const completionDate = page.properties.완료일.date?.start
           ? new Date(page.properties.완료일.date.start)
           : null;
@@ -96,7 +102,7 @@ class ProcessingStatusUpdater {
 
     // "사원별 처리완료 건" 데이터베이스를 전부 삭제합니다.
     for (const page of processingStatusResponse.results) {
-      await this.notion.pages.update({
+      await notion.pages.update({
         page_id: page.id,
         archived: true, // 페이지를 보관 상태로 변경하여 삭제합니다.
       });
@@ -104,8 +110,8 @@ class ProcessingStatusUpdater {
 
     // 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
     for (const userId in sortedProcessingStatusByUserInMonth) {
-      await this.notion.pages.create({
-        parent: { database_id: this.processingStatusDatabaseId },
+      await notion.pages.create({
+        parent: { database_id: processingStatusDatabaseId },
         properties: {
           사원: { people: [{ id: userId }] },
           "이번 달 처리완료건": {
@@ -115,21 +121,20 @@ class ProcessingStatusUpdater {
         },
       });
     }
-    
-    console.log("Processing status updated successfully.");
-    } catch (error) {
-    console.error("Error updating processing status:", error);
-    }
-  }
 
-  async run() {
-    try {
-      await this.updateProcessingStatus();
-      console.log("Processing status run successfully.");
-    } catch (error) {
-      console.error("Error updating run status:", error);
-    }
+    console.log("Processing status updated successfully.");
+  } catch (error) {
+    console.error("Error updating processing status:", error);
   }
 }
 
-module.exports = ProcessingStatusUpdater;
+async function run() {
+  try {
+    await updateProcessingStatus();
+    console.log("Processing status run successfully.");
+  } catch (error) {
+    console.error("Error updating run status:", error);
+  }
+}
+
+run();
