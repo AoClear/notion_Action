@@ -8,10 +8,10 @@ const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const helpdeskDatabaseId = process.env.HELPDESK_DATABASE_ID;
 
 // "사원별 처리완료 건" 데이터베이스의 ID
-const processingStatusDatabaseId = process.env.PROCESSING_STATUS_DATABASE_ID;
+const empCompleteCountDatabaseId = process.env.EMP_COMPLETE_COUNT_DATABASE_ID;
 
 // 사용자별로 "상태" 속성의 "완료"값의 갯수를 가져와서 "사원별 처리완료 건" 데이터베이스에 자동으로 기입하는 함수
-async function updateProcessingStatus() {
+async function updateEmpCompleteCount() {
   try {
     // "헬프데스크" 데이터베이스에서 행 정보를 가져옵니다.
     const helpDeskResponse = await notion.databases.query({
@@ -19,13 +19,13 @@ async function updateProcessingStatus() {
     });
 
     // "사원별 처리완료 건" 데이터베이스에서 행 정보를 가져옵니다.
-    const processingStatusResponse = await notion.databases.query({
-      database_id: processingStatusDatabaseId,
+    const empCompleteCountResponse = await notion.databases.query({
+      database_id: empCompleteCountDatabaseId,
     });
 
     // 데이터베이스의 메타데이터를 쿼리하여 가져옵니다.
-    const processingStatusInfo = await notion.databases.retrieve({
-      database_id: processingStatusDatabaseId,
+    const empCompleteCountInfo = await notion.databases.retrieve({
+      database_id: empCompleteCountDatabaseId,
     });
 
     // 현재 날짜를 가져옵니다.
@@ -36,9 +36,9 @@ async function updateProcessingStatus() {
 
     const title = currentMonth + "월 사원별 처리완료 건";
     // "사원별 처리완료 건" 데이터베이스의 제목을 이번 달에 맞게 수정합니다.
-    if (!processingStatusInfo.title[0].plain_text.includes(currentMonth)) {
+    if (!empCompleteCountInfo.title[0].plain_text.includes(currentMonth)) {
       await notion.databases.update({
-        database_id: processingStatusDatabaseId,
+        database_id: empCompleteCountDatabaseId,
         title: [
           {
             type: "text",
@@ -117,7 +117,7 @@ async function updateProcessingStatus() {
       }, {});
 
     // "사원별 처리완료 건" 데이터베이스를 전부 삭제합니다.
-    for (const page of processingStatusResponse.results) {
+    for (const page of empCompleteCountResponse.results) {
       await notion.pages.update({
         page_id: page.id,
         archived: true, // 페이지를 보관 상태로 변경하여 삭제합니다.
@@ -127,7 +127,7 @@ async function updateProcessingStatus() {
     // 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
     for (const empId in sortedCompleteCountByEmpInMonth) {
       await notion.pages.create({
-        parent: { database_id: processingStatusDatabaseId },
+        parent: { database_id: empCompleteCountDatabaseId },
         properties: {
           사원: { people: [{ id: empId }] },
           "이번 달 처리완료 건": {
@@ -139,18 +139,18 @@ async function updateProcessingStatus() {
       });
     }
 
-    console.log("Processing status updated successfully.");
+    console.log("EmpCompleteCount updated successfully.");
   } catch (error) {
-    console.error("Error updating processing status:", error);
+    console.error("Error updating empCompleteCount:", error);
   }
 }
 
 async function run() {
   try {
-    await updateProcessingStatus();
-    console.log("Processing status run successfully.");
+    await updateEmpCompleteCount();
+    console.log("EmpCompleteCount run successfully.");
   } catch (error) {
-    console.error("Error updating run status:", error);
+    console.error("Error empCompleteCount run status:", error);
   }
 }
 
