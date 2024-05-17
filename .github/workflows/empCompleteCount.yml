@@ -1,4 +1,4 @@
-name: Update Processing Status
+name: Update empCompleteCount
 
 # UTC(협정 세계시) + 9시간 = 한국 시간대 
 on:
@@ -22,8 +22,8 @@ jobs:
       run: npm install
 
     - name: Run code to update processing status
-      run: node ProcessingStatusUpdater.js # 여기에 자신의 스크립트 파일 이름을 입력하세요
+      run: node empCompleteCount.js # 여기에 자신의 스크립트 파일 이름을 입력하세요
       env:
         NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
         HELPDESK_DATABASE_ID: ${{ secrets.HELPDESK_DATABASE_ID }}
-        PROCESSING_STATUS_DATABASE_ID: ${{ secrets.PROCESSING_STATUS_DATABASE_ID }}
+        EMP_COMPLETE_COUNT_DATABASE_ID: ${{ secrets.EMP_COMPLETE_COUNT_DATABASE_ID }}
