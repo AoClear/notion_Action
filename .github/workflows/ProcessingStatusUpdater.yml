@@ -1,9 +1,9 @@
 name: Update Processing Status
 
+# UTC(협정 세계시) + 9시간 = 한국 시간대 
 on:
   schedule:
-    - cron: '0 15 * * *' # UTC(협정 세계시) + 9시간 = 한국 시간대 
-                         # 자정에 실행
+    - cron: '0 * * * *' # 1시간 마다 실행
 
 jobs:
   build:
