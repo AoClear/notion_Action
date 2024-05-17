@@ -51,52 +51,68 @@ async function updateProcessingStatus() {
     }
 
     // 사용자별로 "상태" 속성의 "완료"값의 갯수를 계산합니다.
-    const totalProcessingStatusByUser = {}; //누적 '완료'값의 갯수
-    const processingStatusByUserInMonth = {}; //이번달 '완료'값의 갯수
+    const totalCompleteCountByEmp = {}; //누적 '완료'값의 갯수
+    const completeCountByEmpInMonth = {}; //이번달 '완료'값의 갯수
+    const proceedCountByEmp = {}; //'진행중'값의 갯수
     helpDeskResponse.results.forEach((page) => {
-      // 담당자가 있는 경우에만 처리합니다.
-      const userId = page.properties.담당자.people[0]?.id;
-      if (userId) {
-        if (!totalProcessingStatusByUser[userId]) {
-          totalProcessingStatusByUser[userId] = 0;
-          processingStatusByUserInMonth[userId] = 0;
-        }
+      // 담당자가 유효한 경우에만 처리합니다.
+      const manager = page.properties.담당자.people;
+      if (!manager || manager.length === 0) {
+        return;
+      }
 
-        // completionDate가 유효한 경우에만 처리를 진행합니다.
-        const completionDate = page.properties.완료일.date?.start
-          ? new Date(page.properties.완료일.date.start)
-          : null;
-        if (!completionDate) {
-          return; // 날짜가 null이거나 유효하지 않은 경우 함수 실행 종료
-        }
-        // "상태" 속성이 '완료'이고, "완료일" 속성이 현재 연도와 월에 속하는 경우에만 처리합니다.
-        const parsedCompletionDate = new Date(completionDate);
-        const completionYear = parsedCompletionDate.getFullYear();
-        const completionMonth = parsedCompletionDate.getMonth() + 1;
-        if (page.properties.상태.select.name === "완료") {
-          totalProcessingStatusByUser[userId]++;
+      const empId = manager[0].id;
+      if (
+        !empId ||
+        !/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(
+          empId
+        )
+      ) {
+        return;
+      }
+
+      if (!totalCompleteCountByEmp[empId]) {
+        totalCompleteCountByEmp[empId] = 0;
+        completeCountByEmpInMonth[empId] = 0;
+        proceedCountByEmp[empId] = 0;
+      }
+
+      const stateProperty = page.properties.상태.select.name; //헬프데스크 '상태'속성
+      switch (stateProperty) {
+        case "완료":
+          // completionDate가 유효한 경우에만 처리를 진행합니다.
+          const completionDate = page.properties.완료일.date?.start
+            ? new Date(page.properties.완료일.date.start)
+            : null;
+          if (!completionDate) {
+            return; // 날짜가 null이거나 유효하지 않은 경우 함수 실행 종료
+          }
+
+          // "상태" 속성이 '완료'이고, "완료일" 속성이 현재 연도와 월에 속하는 경우에만 처리합니다.
+          const parsedCompletionDate = new Date(completionDate);
+          const completionYear = parsedCompletionDate.getFullYear();
+          const completionMonth = parsedCompletionDate.getMonth() + 1;
+          totalCompleteCountByEmp[empId]++;
           if (
             completionYear === currentYear &&
             completionMonth === currentMonth
           ) {
-            processingStatusByUserInMonth[userId]++;
+            completeCountByEmpInMonth[empId]++;
           }
-        }
-
-        //사원의 처리완료건수가 0이면 행에 추가하지 않습니다.
-        if (totalProcessingStatusByUser[userId] === 0) {
-          delete totalProcessingStatusByUser[userId];
-        }
+          break;
+        case "진행중":
+          proceedCountByEmp[empId]++;
+          break;
       }
     });
 
     // 사용자별 이번 달 처리완료건수를 내림차순으로 정렬합니다.
-    const sortedProcessingStatusByUserInMonth = Object.entries(
-      processingStatusByUserInMonth
+    const sortedCompleteCountByEmpInMonth = Object.entries(
+      completeCountByEmpInMonth
     )
       .sort(([, countA], [, countB]) => countA - countB)
-      .reduce((acc, [userId, count]) => {
-        acc[userId] = count;
+      .reduce((acc, [empId, count]) => {
+        acc[empId] = count;
         return acc;
       }, {});
 
@@ -109,15 +125,16 @@ async function updateProcessingStatus() {
     }
 
     // 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트합니다.
-    for (const userId in sortedProcessingStatusByUserInMonth) {
+    for (const empId in sortedCompleteCountByEmpInMonth) {
       await notion.pages.create({
         parent: { database_id: processingStatusDatabaseId },
         properties: {
-          사원: { people: [{ id: userId }] },
-          "이번 달 처리완료건": {
-            number: sortedProcessingStatusByUserInMonth[userId],
+          사원: { people: [{ id: empId }] },
+          "이번 달 처리완료 건": {
+            number: sortedCompleteCountByEmpInMonth[empId],
           },
-          "누적 처리완료 건": { number: totalProcessingStatusByUser[userId] },
+          "누적 처리완료 건": { number: totalCompleteCountByEmp[empId] },
+          "진행중 접수 건": { number: proceedCountByEmp[empId] },
         },
       });
     }
