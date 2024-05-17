@@ -17,11 +17,19 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '14'
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+            ${{ runner.os }}-npm-
 
     - name: Install dependencies
       run: npm install
 
-    - name: Run code to update processing status
+    - name: Run code to update empCompleteCount
       run: node empCompleteCount.js # 여기에 자신의 스크립트 파일 이름을 입력하세요
       env:
         NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
