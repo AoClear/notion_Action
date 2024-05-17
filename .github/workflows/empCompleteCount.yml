@@ -1,14 +1,10 @@
 name: Update empCompleteCount
 
 # UTC(협정 세계시) + 9시간 = 한국 시간대 
-# on:
-#   schedule:
-#     - cron: '0 * * * *' # 1시간 마다 실행
-
 on:
   schedule:
-    - cron: '*/5 * * * *'
-
+    - cron: '0 * * * *' # 1시간 마다 실행
+    
 jobs:
   build:
     runs-on: ubuntu-latest
