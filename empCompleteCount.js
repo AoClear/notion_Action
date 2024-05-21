@@ -77,7 +77,7 @@ async function updateEmpCompleteCount() {
         proceedCountByEmp[empId] = 0;
       }
 
-      const stateProperty = page.properties.상태.select.name; //헬프데스크 '상태'속성
+      const stateProperty = page.properties.상태?.select?.name; //헬프데스크 '상태'속성
       switch (stateProperty) {
         case "완료":
           // completionDate가 유효한 경우에만 처리를 진행합니다.
