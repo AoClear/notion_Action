@@ -84,10 +84,10 @@ async function updateEmpCompleteCount() {
           const completionDate = page.properties.완료일.date?.start
             ? new Date(page.properties.완료일.date.start)
             : null;
+
           if (!completionDate) {
             return; // 날짜가 null이거나 유효하지 않은 경우 함수 실행 종료
           }
-
           // "상태" 속성이 '완료'이고, "완료일" 속성이 현재 연도와 월에 속하는 경우에만 처리합니다.
           const parsedCompletionDate = new Date(completionDate);
           const completionYear = parsedCompletionDate.getFullYear();

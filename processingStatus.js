@@ -38,7 +38,7 @@ async function updateProcessingStatus() {
           addInquireCount++;
           break;
         case "완료":
-          completeCount++;
+          if (page.properties.완료일.date?.start) completeCount++;
           break;
         case "개발완료":
           devCompleteCount++;
