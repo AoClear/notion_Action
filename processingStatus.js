@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { Client } = require("@notionhq/client");
+const { getAllDatabaseItems } = require("./util");
 
 // Notion API를 초기화합니다.
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -16,16 +17,14 @@ const processedBlockId = process.env.PROCESSED_BLOCK_ID;
 async function updateProcessingStatus() {
   try {
     // "헬프데스크" 데이터베이스에서 행 정보를 가져옵니다.
-    const helpDeskResponse = await notion.databases.query({
-      database_id: helpdeskDatabaseId,
-    });
+    const helpDeskResults = await getAllDatabaseItems(helpdeskDatabaseId);
 
     let waitCount = 0; //"대기"값의 갯수
     let proceedCount = 0; //"진행중"값의 갯수
     let addInquireCount = 0; //"추가문의"값의 갯수
     let completeCount = 0; //"완료"값의 갯수
     let devCompleteCount = 0; //"개발완료"값의 갯수
-    helpDeskResponse.results.forEach((page) => {
+    helpDeskResults.forEach((page) => {
       const stateProperty = page.properties.상태?.select?.name; //헬프데스크 '상태'속성
       switch (stateProperty) {
         case "대기":

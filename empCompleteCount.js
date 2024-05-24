@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { Client } = require("@notionhq/client");
+const { getAllDatabaseItems } = require("./util");
 
 // Notion API를 초기화합니다.
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -13,24 +14,22 @@ const empCompleteCountDatabaseId = process.env.EMP_COMPLETE_COUNT_DATABASE_ID;
 // 사용자별로 "상태" 속성의 "완료"값의 갯수를 가져와서 "사원별 처리완료 건" 데이터베이스에 자동으로 기입하는 함수
 async function updateEmpCompleteCount() {
   try {
-    // "헬프데스크" 데이터베이스에서 행 정보를 가져옵니다.
-    const helpDeskResponse = await notion.databases.query({
-      database_id: helpdeskDatabaseId,
-    });
+    // "헬프데스크" 데이터베이스에서 모든 행 정보를 가져옵니다.
+    const helpDeskResults = await getAllDatabaseItems(helpdeskDatabaseId);
 
-    // "사원별 처리완료 건" 데이터베이스에서 행 정보를 가져옵니다.
-    const empCompleteCountResponse = await notion.databases.query({
-      database_id: empCompleteCountDatabaseId,
-    });
+    // "사원별 처리완료 건" 데이터베이스에서 모든 행 정보를 가져옵니다.
+    const empCompleteCountResults = await getAllDatabaseItems(
+      empCompleteCountDatabaseId
+    );
 
     // 데이터베이스의 메타데이터를 쿼리하여 가져옵니다.
     const empCompleteCountInfo = await notion.databases.retrieve({
       database_id: empCompleteCountDatabaseId,
     });
 
-    // 현재 날짜를 가져옵니다.
+    // 현재 날짜
     const currentDate = new Date();
-    // 현재 연도와 월을 가져옵니다.
+    // 현재 연도와 월
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth() + 1; // JavaScript의 getMonth()는 0부터 시작하므로 1을 더해줍니다.
 
@@ -54,23 +53,14 @@ async function updateEmpCompleteCount() {
     const totalCompleteCountByEmp = {}; //누적 '완료'값의 갯수
     const completeCountByEmpInMonth = {}; //이번달 '완료'값의 갯수
     const proceedCountByEmp = {}; //'진행중'값의 갯수
-    helpDeskResponse.results.forEach((page) => {
-      // 담당자가 유효한 경우에만 처리합니다.
+    helpDeskResults.forEach((page) => {
+      // 담당자 유효성 검사
       const manager = page.properties.담당자.people;
       if (!manager || manager.length === 0) {
         return;
       }
 
       const empId = manager[0].id;
-      if (
-        !empId ||
-        !/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(
-          empId
-        )
-      ) {
-        return;
-      }
-
       if (!totalCompleteCountByEmp[empId]) {
         totalCompleteCountByEmp[empId] = 0;
         completeCountByEmpInMonth[empId] = 0;
@@ -80,13 +70,13 @@ async function updateEmpCompleteCount() {
       const stateProperty = page.properties.상태?.select?.name; //헬프데스크 '상태'속성
       switch (stateProperty) {
         case "완료":
-          // completionDate가 유효한 경우에만 처리를 진행합니다.
+          // 완료일 유효성 검사
           const completionDate = page.properties.완료일.date?.start
             ? new Date(page.properties.완료일.date.start)
             : null;
 
           if (!completionDate) {
-            return; // 날짜가 null이거나 유효하지 않은 경우 함수 실행 종료
+            return;
           }
           // "상태" 속성이 '완료'이고, "완료일" 속성이 현재 연도와 월에 속하는 경우에만 처리합니다.
           const parsedCompletionDate = new Date(completionDate);
@@ -106,7 +96,8 @@ async function updateEmpCompleteCount() {
       }
     });
 
-    // 사용자별 이번 달 처리완료건수를 내림차순으로 정렬합니다.
+    // 정렬(오름차순) - 데이터베이스에 행 추가될 때
+    // 위로 쌓이듯이 추가되기 때문에 반대로 정렬합니다
     const sortedCompleteCountByEmpInMonth = Object.entries(
       completeCountByEmpInMonth
     )
@@ -117,7 +108,7 @@ async function updateEmpCompleteCount() {
       }, {});
 
     // "사원별 처리완료 건" 데이터베이스를 전부 삭제합니다.
-    for (const page of empCompleteCountResponse.results) {
+    for (const page of empCompleteCountResults) {
       await notion.pages.update({
         page_id: page.id,
         archived: true, // 페이지를 보관 상태로 변경하여 삭제합니다.
