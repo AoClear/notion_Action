@@ -3,7 +3,13 @@ name: Update completeCountByEmp
 # UTC(협정 세계시) + 9시간 = 한국 시간대 
 on:
   schedule:
-    - cron: '0 * * * *' # 1시간 마다 실행
+    - cron: '0 * * * *' # 1시간 마다 실행   
+  workflow_dispatch:
+      inputs:
+         logLevel:
+            description: 'Log level'     
+            required: true
+            default: 'warning'
     
 jobs:
   build:
