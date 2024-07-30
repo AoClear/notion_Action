@@ -1,0 +1,38 @@
+name: Update completeCountByEmp
+
+# UTC(협정 세계시) + 9시간 = 한국 시간대 
+on:
+  schedule:
+    - cron: '0 * * * *' # 1시간 마다 실행
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+            ${{ runner.os }}-npm-
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run code to update completeCountByEmp
+      run: node main/completeCountByEmp.js # 여기에 자신의 스크립트 파일 이름을 입력하세요
+      env:
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        HELPDESK_DATABASE_ID: ${{ secrets.HELPDESK_DATABASE_ID }}
+        COMPLETE_COUNT_BY_EMP_DATABASE_ID: ${{ secrets.COMPLETE_COUNT_BY_EMP_DATABASE_ID }}
+        PROCESSED_BLOCK_ID: ${{ secrets.PROCESSED_BLOCK_ID }}
