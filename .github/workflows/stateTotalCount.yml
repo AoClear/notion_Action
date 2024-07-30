@@ -1,4 +1,4 @@
-name: Update empCompleteCount
+name: Update stateTotalCount
 
 # UTC(협정 세계시) + 9시간 = 한국 시간대 
 on:
@@ -29,9 +29,10 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run code to update empCompleteCount
-      run: node empCompleteCount.js # 여기에 자신의 스크립트 파일 이름을 입력하세요
+    - name: Run code to update stateTotalCount
+      run: node main/stateTotalCount.js # 여기에 자신의 스크립트 파일 이름을 입력하세요
       env:
         NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
         HELPDESK_DATABASE_ID: ${{ secrets.HELPDESK_DATABASE_ID }}
-        EMP_COMPLETE_COUNT_DATABASE_ID: ${{ secrets.EMP_COMPLETE_COUNT_DATABASE_ID }}
+        UNPROCESSED_BLOCK_ID: ${{ secrets.UNPROCESSED_BLOCK_ID }}
+        PROCESSED_BLOCK_ID: ${{ secrets.PROCESSED_BLOCK_ID }}
