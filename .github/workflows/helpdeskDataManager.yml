@@ -3,7 +3,7 @@ name: Update helpdeskDataManager
 # UTC(협정 세계시) + 9시간 = 한국 시간대 
 on:
   schedule:
-    - cron: '0 * * * *' # 1시간 마다 실행
+    - cron: '0 15 1 * *' # 매달 1일 한국 시간 기준 00:00 (UTC 15:00) 실행
     
 jobs:
   build:
