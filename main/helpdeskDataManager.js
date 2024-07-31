@@ -24,7 +24,7 @@ async function deleteData() {
     // 항목 삭제
     for (const item of helpDesk_Items) {
       if (moment().diff(moment(item.created_time), "months") > 2) {
-        await notion.pages.delete({ page_id: item.id });
+        await notion.pages.delete({ page _id: item.id });
       }
     }
   } catch (error) {
