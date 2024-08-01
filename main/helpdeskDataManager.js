@@ -144,7 +144,7 @@ async function saveDataToFile(data, folderPath, fileName) {
 
 async function run() {
   try {
-    await deleteData();
+    //await deleteData();
     await saveData();
     await updateStateCountDataByEmp();
   } catch (error) {
