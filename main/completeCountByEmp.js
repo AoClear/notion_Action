@@ -86,10 +86,34 @@ async function updateCompleteCountByEmp() {
 
     for (let key in jsonData) {
       for (let key2 in jsonData[key]["완료"]) {
+        if (!totalCompleteCount[key2]) {
+          totalCompleteCount[key2] = 0;
+        }
+
+        if (!completeCountInMonth[key2]) {
+          completeCountInMonth[key2] = 0;
+        }
+
+        if (!progressCount[key2]) {
+          progressCount[key2] = 0;
+        }
+
         totalCompleteCount[key2] += jsonData[key]["완료"][key2].value;
       }
 
       for (let key2 in jsonData[key]["진행중"]) {
+        if (!totalCompleteCount[key2]) {
+          totalCompleteCount[key2] = 0;
+        }
+
+        if (!completeCountInMonth[key2]) {
+          completeCountInMonth[key2] = 0;
+        }
+
+        if (!progressCount[key2]) {
+          progressCount[key2] = 0;
+        }
+
         progressCount[key2] += jsonData[key]["진행중"][key2].value;
       }
     }
