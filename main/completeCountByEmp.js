@@ -31,9 +31,10 @@ async function updateCompleteCountByEmp() {
   try {
     await updateCompleteCountByEmp_Title();
 
-    const totalCompleteCount = {}; //누적 처리완료 건
+    const notionCompleteCount = {}; //누적 처리완료 건
     let completeCountInMonth = {}; //금월 처리완료 건
     const progressCount = {}; //진행중 접수 건
+    const toDoCompleteCount = {}; //To-do 처리완료
     // -------------------- 금월 완료 및 진행중 데이터 갯수 수집 --------------------
     helpDesk_Items.forEach((item) => {
       const manager = item.properties.담당자?.people;
@@ -50,8 +51,8 @@ async function updateCompleteCountByEmp() {
       for (let i = 0, len = manager.length; i < len; i++) {
         const empId = manager[i].id;
 
-        if (!totalCompleteCount[empId]) {
-          totalCompleteCount[empId] = 0;
+        if (!notionCompleteCount[empId]) {
+          notionCompleteCount[empId] = 0;
           completeCountInMonth[empId] = 0;
           progressCount[empId] = 0;
         }
@@ -61,7 +62,7 @@ async function updateCompleteCountByEmp() {
         switch (stateProperty) {
           case "완료":
             //'누적 처리완료 건' 증가
-            totalCompleteCount[empId]++;
+            notionCompleteCount[empId]++;
             completeCountInMonth[empId]++;
             break;
           case "진행중":
@@ -86,8 +87,8 @@ async function updateCompleteCountByEmp() {
 
     for (let key in jsonData) {
       for (let key2 in jsonData[key]["완료"]) {
-        if (!totalCompleteCount[key2]) {
-          totalCompleteCount[key2] = 0;
+        if (!notionCompleteCount[key2]) {
+          notionCompleteCount[key2] = 0;
         }
 
         if (!completeCountInMonth[key2]) {
@@ -98,12 +99,12 @@ async function updateCompleteCountByEmp() {
           progressCount[key2] = 0;
         }
 
-        totalCompleteCount[key2] += jsonData[key]["완료"][key2].value;
+        notionCompleteCount[key2] += jsonData[key]["완료"][key2].value;
       }
 
       for (let key2 in jsonData[key]["진행중"]) {
-        if (!totalCompleteCount[key2]) {
-          totalCompleteCount[key2] = 0;
+        if (!notionCompleteCount[key2]) {
+          notionCompleteCount[key2] = 0;
         }
 
         if (!completeCountInMonth[key2]) {
@@ -126,7 +127,14 @@ async function updateCompleteCountByEmp() {
         ([, countA], [, countB]) => countA - countB
       )
     );
-    //--------------------------------------------------------------------
+    // --------------------------------------------------------------------
+
+    // --------------- 기존 'To-do 처리완료' 데이터 불러오기 ---------------
+    completeCountByEmp_Items.forEach((item) => {
+      toDoCompleteCount[item.properties["사원"]?.people[0]?.id] =
+        item.properties["To-do 처리완료"].number;
+    });
+    // -------------------------------------------------------------------
 
     await clearData(completeCountByEmp_Items);
 
@@ -139,8 +147,9 @@ async function updateCompleteCountByEmp() {
           "이번 달 처리완료 건": {
             number: completeCountInMonth[empId],
           },
-          "누적 처리완료 건": { number: totalCompleteCount[empId] },
+          "Notion 처리완료": { number: notionCompleteCount[empId] },
           "진행중 접수 건": { number: progressCount[empId] },
+          "To-do 처리완료": { number: toDoCompleteCount[empId] },
         },
       });
     }
