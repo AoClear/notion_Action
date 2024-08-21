@@ -1,76 +1,79 @@
 {
-  "2024-07": {
-    "완료": {
-      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
-        "name": "김홍",
-        "value": 59
-      },
+  "2024-05": {
+    "작업시간": {
       "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
         "name": "윤창은",
-        "value": 60
-      },
-      "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
-        "name": "임연주",
-        "value": 38
+        "value": 52
       },
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
-        "value": 18
+        "value": 21.5
       },
-      "5d679a15-b5b4-4d07-908e-289eac58dfac": {
-        "name": "조성우",
-        "value": 8
-      }
-    },
-    "대기": {
       "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
         "name": "임연주",
-        "value": 3
+        "value": 21
       },
       "64404aa5-3dae-461e-adda-11d6c30f1b81": {
         "name": "김홍",
-        "value": 1
-      },
+        "value": 43.5
+      }
+    },
+    "완료": {
       "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
         "name": "윤창은",
-        "value": 1
+        "value": 54
+      },
+      "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
+        "name": "황재호",
+        "value": 21
+      },
+      "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
+        "name": "임연주",
+        "value": 40
+      },
+      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
+        "name": "김홍",
+        "value": 35
       }
     },
     "진행중": {
-      "5d679a15-b5b4-4d07-908e-289eac58dfac": {
-        "name": "조성우",
-        "value": 2
-      },
-      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
-        "name": "윤창은",
-        "value": 1
-      },
-      "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
-        "name": "황재호",
-        "value": 1
-      },
       "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
         "name": "임연주",
         "value": 1
-      },
-      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
-        "name": "김홍",
-        "value": 3
       }
     },
-    "undefined": {},
-    "개발완료": {
+    "상무님": {},
+    "대기": {
+      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
+        "name": "윤창은",
+        "value": 1
+      }
+    },
+    "undefined": {}
+  },
+  "2024-06": {
+    "작업시간": {
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
-        "value": 4
+        "value": 25
+      },
+      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
+        "name": "윤창은",
+        "value": 58
       },
       "64404aa5-3dae-461e-adda-11d6c30f1b81": {
         "name": "김홍",
-        "value": 2
+        "value": 37.5
+      },
+      "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
+        "name": "임연주",
+        "value": 15
+      },
+      "5d679a15-b5b4-4d07-908e-289eac58dfac": {
+        "name": "조성우",
+        "value": 1.5
       }
-    }
-  },
-  "2024-06": {
+    },
     "완료": {
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
@@ -111,33 +114,93 @@
     },
     "상무님": {}
   },
-  "2024-05": {
-    "완료": {
+  "2024-07": {
+    "작업시간": {
+      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
+        "name": "김홍",
+        "value": 83
+      },
       "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
         "name": "윤창은",
-        "value": 54
+        "value": 52
+      },
+      "5d679a15-b5b4-4d07-908e-289eac58dfac": {
+        "name": "조성우",
+        "value": 15.5
+      },
+      "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
+        "name": "임연주",
+        "value": 38
       },
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
-        "value": 21
+        "value": 13
+      }
+    },
+    "완료": {
+      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
+        "name": "김홍",
+        "value": 62
+      },
+      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
+        "name": "윤창은",
+        "value": 62
+      },
+      "5d679a15-b5b4-4d07-908e-289eac58dfac": {
+        "name": "조성우",
+        "value": 10
       },
       "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
         "name": "임연주",
-        "value": 40
+        "value": 38
       },
-      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
-        "name": "김홍",
-        "value": 35
+      "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
+        "name": "황재호",
+        "value": 18
       }
     },
+    "undefined": {},
     "진행중": {
+      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
+        "name": "윤창은",
+        "value": 1
+      },
       "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
         "name": "임연주",
         "value": 1
+      },
+      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
+        "name": "김홍",
+        "value": 1
+      },
+      "5d679a15-b5b4-4d07-908e-289eac58dfac": {
+        "name": "조성우",
+        "value": 1
       }
     },
-    "상무님": {},
-    "대기": {},
-    "undefined": {}
+    "대기": {
+      "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
+        "name": "임연주",
+        "value": 3
+      },
+      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
+        "name": "김홍",
+        "value": 1
+      },
+      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
+        "name": "윤창은",
+        "value": 1
+      }
+    },
+    "개발완료": {
+      "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
+        "name": "황재호",
+        "value": 5
+      },
+      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
+        "name": "김홍",
+        "value": 1
+      }
+    }
   }
 }

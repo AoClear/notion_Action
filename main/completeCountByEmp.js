@@ -31,10 +31,11 @@ async function updateCompleteCountByEmp() {
   try {
     await updateCompleteCountByEmp_Title();
 
-    const notionCompleteCount = {}; //누적 처리완료 건
-    let completeCountInMonth = {}; //금월 처리완료 건
+    const notionCompleteCount = {}; //Notion 처리완료
+    let completeCountInMonth = {}; //이번 달 처리완료 건
     const progressCount = {}; //진행중 접수 건
     const toDoCompleteCount = {}; //To-do 처리완료
+    const totalWorkTime = {}; //누적 작업시간
     // -------------------- 금월 완료 및 진행중 데이터 갯수 수집 --------------------
     helpDesk_Items.forEach((item) => {
       const manager = item.properties.담당자?.people;
@@ -42,7 +43,8 @@ async function updateCompleteCountByEmp() {
       if (!manager) {
         return;
       }
-      // 완료일 유효성 검사
+
+      // 데이터 생성날짜가 이번 달이 아닐경우 취소
       const createdDate = moment(item.created_time).format("YYYY-MM");
       if (createdDate !== moment().format("YYYY-MM")) {
         return;
@@ -55,11 +57,11 @@ async function updateCompleteCountByEmp() {
           notionCompleteCount[empId] = 0;
           completeCountInMonth[empId] = 0;
           progressCount[empId] = 0;
+          totalWorkTime[empId] = 0;
         }
 
         //헬프데스크 데이터베이스 '상태'속성
-        const stateProperty = item.properties.상태?.select?.name;
-        switch (stateProperty) {
+        switch (item.properties.상태?.select?.name) {
           case "완료":
             //'누적 처리완료 건' 증가
             notionCompleteCount[empId]++;
@@ -69,6 +71,13 @@ async function updateCompleteCountByEmp() {
             progressCount[empId]++;
             break;
         }
+
+        totalWorkTime[empId] +=
+          parseFloat(
+            item.properties.작업시간?.rich_text[0]?.plain_text.match(
+              /[\d.]+/
+            )?.[0]
+          ) || 0;
       }
     });
     // ----------------------------------------------------------------------
@@ -117,6 +126,14 @@ async function updateCompleteCountByEmp() {
 
         progressCount[key2] += jsonData[key]["진행중"][key2].value;
       }
+
+      for (let key2 in jsonData[key]["작업시간"]) {
+        if (!totalWorkTime[key2]) {
+          totalWorkTime[key2] = 0;
+        }
+
+        totalWorkTime[key2] += jsonData[key]["작업시간"][key2].value;
+      }
     }
     // ------------------------------------------------------------------------
 
@@ -150,6 +167,7 @@ async function updateCompleteCountByEmp() {
           "Notion 처리완료": { number: notionCompleteCount[empId] },
           "진행중 접수 건": { number: progressCount[empId] },
           "To-do 처리완료": { number: toDoCompleteCount[empId] },
+          "누적 작업시간": { number: totalWorkTime[empId] },
         },
       });
     }

@@ -2,12 +2,12 @@
 1. 2달 이내의 데이터를 제외하고 전부 삭제
  - ex) 금월이 7월이라면 6월, 5월 데이터를 제외하고 삭제
 2. 금월을 제외한 데이터 전부 저장
-3. 전월 사용자별 상태 갯수 저장
+3. 금월을 제외한 상태 갯수 저장
 */
 require("dotenv").config();
 const { Client } = require("@notionhq/client");
 const { getAllDatabaseItems } = require("../util");
-const fs = require("fs");
+const fs = require("fs").promises;
 const path = require("path");
 const moment = require("moment");
 
@@ -74,72 +74,101 @@ async function saveData() {
 
 async function updateStateCountDataByEmp() {
   try {
-    // "헬프데스크" 데이터베이스 모든 행 정보
-    const helpDesk_Items = await getAllDatabaseItems(helpdesk_Id);
-    // stateCountByEmp_data 폴더 경로 설정
+    // 데이터 파일명 및 폴더 경로 설정
+    const fileName = "stateCountByEmp.json";
     const baseFolder = path.join(__dirname, "../data");
     const fullFolderPath = path.join(baseFolder, "stateCountByEmp_data");
-    // 파일 경로 설정
-    const fileName = "stateCountByEmp.json";
-    const filePath = path.join(fullFolderPath, fileName);
-    // JSON 파일 읽기
-    let jsonData = {};
-    if (fs.existsSync(filePath)) {
-      const fileContent = fs.readFileSync(filePath, "utf8");
-      jsonData = JSON.parse(fileContent);
+    const helpdeskDataFolderPath = path.join(
+      __dirname,
+      "../data",
+      "helpdesk_data"
+    );
+    const helpdeskDataFiles = await fs.readdir(helpdeskDataFolderPath);
+
+    let newData = {};
+    for (const file of helpdeskDataFiles) {
+      const filePath = path.join(helpdeskDataFolderPath, file);
+
+      if (path.extname(file) === ".json") {
+        try {
+          const fileContent = await fs.readFile(filePath, "utf8");
+          const jsonData = JSON.parse(fileContent);
+
+          jsonData.forEach((item) => {
+            const createdDate = moment(item.created_time).format("YYYY-MM");
+
+            // 날짜속성 초기화
+            if (!newData[createdDate]) {
+              newData[createdDate] = {};
+            }
+
+            // 작업시간 속성 초기화
+            if (!newData[createdDate]["작업시간"]) {
+              newData[createdDate]["작업시간"] = {};
+            }
+
+            // 상태속성 초기화
+            const stateName = item.properties.상태?.select?.name;
+            if (!newData[createdDate][stateName]) {
+              newData[createdDate][stateName] = {};
+            }
+
+            // 담당자(이름)속성 초기화
+            const manager = item.properties.담당자?.people;
+            for (let i = 0, len = manager.length; i < len; i++) {
+              const managerId = manager[i].id;
+
+              // 작업시간 속성의 속성 초기화
+              if (!newData[createdDate]["작업시간"][managerId]) {
+                newData[createdDate]["작업시간"][managerId] = {
+                  name: manager[i].name,
+                  value: 0,
+                };
+              }
+
+              // 상태 속성의 속성 초기화
+              if (!newData[createdDate][stateName][managerId]) {
+                newData[createdDate][stateName][managerId] = {
+                  name: manager[i].name,
+                  value: 0,
+                };
+              }
+
+              newData[createdDate][stateName][managerId].value++;
+              newData[createdDate]["작업시간"][managerId].value +=
+                parseFloat(
+                  item.properties.작업시간?.rich_text[0]?.plain_text.match(
+                    /[\d.]+/
+                  )?.[0]
+                ) || 0;
+            }
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      }
     }
 
-    // 헬프데스크에서 전월 데이터 추출
-    let newData = {};
-    helpDesk_Items.forEach((item) => {
-      const createdDate = moment(item.created_time).format("YYYY-MM");
-      //전월 이외 대상은 제외
-      if (createdDate !== moment().subtract(1, "months").format("YYYY-MM")) {
-        return;
-      }
-      //날짜속성 초기화
-      if (!newData[createdDate]) {
-        newData[createdDate] = {};
-      }
-      //상태속성 초기화
-      const stateName = item.properties.상태?.select?.name;
-      if (!newData[createdDate][stateName]) {
-        newData[createdDate][stateName] = {};
-      }
-
-      //담당자(이름)속성 초기화
-      const manager = item.properties.담당자?.people;
-      for (let i = 0, len = manager.length; i < len; i++) {
-        const managerId = manager[i].id;
-
-        //id 초기화
-        if (!newData[createdDate][stateName][managerId]) {
-          newData[createdDate][stateName][managerId] = {
-            name: manager[i].name,
-            value: 0,
-          };
-        }
-
-        newData[createdDate][stateName][managerId].value++;
-      }
-    });
-
     // 업데이트된 데이터 저장
-    saveDataToFile({ ...newData, ...jsonData }, fullFolderPath, fileName);
+    await saveDataToFile(newData, fullFolderPath, fileName);
   } catch (error) {
-    console.error(error);
+    console.error("Error updating state count data:", error);
   }
 }
 
-// JSON 파일로 데이터 저장
+// JSON 파일로 데이터 저장 (비동기 방식)
 async function saveDataToFile(data, folderPath, fileName) {
   const filePath = path.join(folderPath, fileName);
-  //폴더 경로가 존재하지 않으면 생성
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath, { recursive: true });
-  }
+  try {
+    // 폴더 경로가 존재하지 않으면 생성
+    await fs.mkdir(folderPath, { recursive: true });
 
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+    // JSON 데이터를 문자열로 변환하고 파일에 저장
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+  } catch (error) {
+    console.error("Error saving data to file:", error);
+    throw error;
+  }
 }
 
 async function run() {

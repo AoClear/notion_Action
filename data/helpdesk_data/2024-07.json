@@ -444,7 +444,7 @@
     "object": "page",
     "id": "f9f5739e-a6ce-4051-bf0b-cd0734aaf217",
     "created_time": "2024-07-31T07:04:00.000Z",
-    "last_edited_time": "2024-07-31T07:05:00.000Z",
+    "last_edited_time": "2024-08-08T08:15:00.000Z",
     "created_by": {
       "object": "user",
       "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
@@ -485,7 +485,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -496,15 +496,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-08-08",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=K}|",
-          "name": "대기",
-          "color": "default"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -515,17 +519,64 @@
       "메모": {
         "id": "lKo%7B",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "실시간 장윤상 상무님한테 문의 中, 금일(8/6(화)) 처리될듯",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "실시간 장윤상 상무님한테 문의 中, 금일(8/6(화)) 처리될듯",
+            "href": null
+          }
+        ]
       },
       "담당자": {
         "id": "tQc%7D",
         "type": "people",
-        "people": []
+        "people": [
+          {
+            "object": "user",
+            "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb",
+            "name": "윤창은",
+            "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocJkrrodSzNSPlk8JvbrUFeoS5Y70VA-9QcJtpS2oc1a_GWQ1g=s100",
+            "type": "person",
+            "person": {
+              "email": "ckddms9527@gmail.com"
+            }
+          }
+        ]
       },
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "3.5",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "3.5",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -705,14 +756,14 @@
     "object": "page",
     "id": "5ffe9611-6348-4282-8027-67b975ab1443",
     "created_time": "2024-07-31T05:37:00.000Z",
-    "last_edited_time": "2024-07-31T07:49:00.000Z",
+    "last_edited_time": "2024-08-02T01:41:00.000Z",
     "created_by": {
       "object": "user",
       "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -746,7 +797,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -757,15 +808,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-08-02",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=`ki",
-          "name": "진행중",
-          "color": "yellow"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -797,7 +852,25 @@
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "1.5",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "1.5",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -830,14 +903,14 @@
     "object": "page",
     "id": "39973dca-db0b-4944-b93f-7e92692fddc2",
     "created_time": "2024-07-31T04:54:00.000Z",
-    "last_edited_time": "2024-08-01T05:11:00.000Z",
+    "last_edited_time": "2024-08-01T08:15:00.000Z",
     "created_by": {
       "object": "user",
       "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "32eaf579-42a2-4e85-b4ad-e57d56126b95"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -871,7 +944,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -882,15 +955,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-08-01",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=K}|",
-          "name": "대기",
-          "color": "default"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -906,12 +983,41 @@
       "담당자": {
         "id": "tQc%7D",
         "type": "people",
-        "people": []
+        "people": [
+          {
+            "object": "user",
+            "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb",
+            "name": "윤창은",
+            "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocJkrrodSzNSPlk8JvbrUFeoS5Y70VA-9QcJtpS2oc1a_GWQ1g=s100",
+            "type": "person",
+            "person": {
+              "email": "ckddms9527@gmail.com"
+            }
+          }
+        ]
       },
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "2.5",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "2.5",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -2495,14 +2601,14 @@
     "object": "page",
     "id": "7df72e68-6cb7-4109-a91b-b646bd21ac48",
     "created_time": "2024-07-30T05:05:00.000Z",
-    "last_edited_time": "2024-07-30T08:36:00.000Z",
+    "last_edited_time": "2024-08-14T07:24:00.000Z",
     "created_by": {
       "object": "user",
       "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb"
+      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "cover": null,
     "icon": null,
@@ -2570,7 +2676,7 @@
           {
             "type": "text",
             "text": {
-              "content": "개빡;\n업로드시  해당년도 초에 작년꺼 업로드함\n다시 업로드시 기존 업로드 데이터 저거후 다시 업로드",
+              "content": "업로드시  해당년도 초에 작년꺼 업로드함\n다시 업로드시 기존 업로드 데이터 저거후 다시 업로드",
               "link": null
             },
             "annotations": {
@@ -2581,7 +2687,7 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "개빡;\n업로드시  해당년도 초에 작년꺼 업로드함\n다시 업로드시 기존 업로드 데이터 저거후 다시 업로드",
+            "plain_text": "업로드시  해당년도 초에 작년꺼 업로드함\n다시 업로드시 기존 업로드 데이터 저거후 다시 업로드",
             "href": null
           }
         ]
@@ -7774,7 +7880,7 @@
     "object": "page",
     "id": "29703dc5-1ef9-4424-b8fb-03419b892f34",
     "created_time": "2024-07-25T02:02:00.000Z",
-    "last_edited_time": "2024-07-26T06:18:00.000Z",
+    "last_edited_time": "2024-08-06T07:26:00.000Z",
     "created_by": {
       "object": "user",
       "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
@@ -7845,25 +7951,7 @@
       "메모": {
         "id": "lKo%7B",
         "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "바빠서 진짜 못함\n그만 내일 덕상한테 말하셈;\n- 진짜 할 시간 없어서 나중에 연락오면 다른 사람 돌림 ",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "바빠서 진짜 못함\n그만 내일 덕상한테 말하셈;\n- 진짜 할 시간 없어서 나중에 연락오면 다른 사람 돌림 ",
-            "href": null
-          }
-        ]
+        "rich_text": []
       },
       "담당자": {
         "id": "tQc%7D",
@@ -8512,14 +8600,14 @@
     "object": "page",
     "id": "5df6a654-cba2-4b12-9964-4db8dfc947f0",
     "created_time": "2024-07-24T02:30:00.000Z",
-    "last_edited_time": "2024-07-25T02:05:00.000Z",
+    "last_edited_time": "2024-08-14T07:24:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
+      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "cover": null,
     "icon": null,
@@ -8587,7 +8675,7 @@
           {
             "type": "text",
             "text": {
-              "content": "- 2024-07-24 덕상이 저나한다함\n→ 저나가 아니라 전.화.",
+              "content": "- 2024-07-24 덕상이 저나한다함",
               "link": null
             },
             "annotations": {
@@ -8598,7 +8686,7 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "- 2024-07-24 덕상이 저나한다함\n→ 저나가 아니라 전.화.",
+            "plain_text": "- 2024-07-24 덕상이 저나한다함",
             "href": null
           }
         ]
@@ -8655,7 +8743,7 @@
     "object": "page",
     "id": "ba3b9ec7-b500-4940-ab9c-a9534bed3911",
     "created_time": "2024-07-24T02:29:00.000Z",
-    "last_edited_time": "2024-07-30T07:43:00.000Z",
+    "last_edited_time": "2024-08-14T00:54:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
@@ -8696,7 +8784,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -8713,9 +8801,9 @@
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=`ki",
-          "name": "진행중",
-          "color": "yellow"
+          "id": "AuZR",
+          "name": "개발완료",
+          "color": "green"
         }
       },
       "관련 파일": {
@@ -9314,8 +9402,8 @@
             "name": "이관 요청 방문율 메뉴 (2).pptx",
             "type": "file",
             "file": {
-              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/335f2be5-3bd0-468a-91c1-5ab1f83b59c1/712d93b6-37ea-4b9d-8eb7-d80b10539829/%EC%9D%B4%EA%B4%80_%EC%9A%94%EC%B2%AD_%EB%B0%A9%EB%AC%B8%EC%9C%A8_%EB%A9%94%EB%89%B4_%282%29.pptx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240801%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240801T052022Z&X-Amz-Expires=3600&X-Amz-Signature=aa455c5cc06fa3830e12122ad1abb788cdf5a887420186bc78ca835873c03a9d&X-Amz-SignedHeaders=host&x-id=GetObject",
-              "expiry_time": "2024-08-01T06:20:22.132Z"
+              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/335f2be5-3bd0-468a-91c1-5ab1f83b59c1/712d93b6-37ea-4b9d-8eb7-d80b10539829/%EC%9D%B4%EA%B4%80_%EC%9A%94%EC%B2%AD_%EB%B0%A9%EB%AC%B8%EC%9C%A8_%EB%A9%94%EB%89%B4_%282%29.pptx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240821%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240821T050218Z&X-Amz-Expires=3600&X-Amz-Signature=77fb2453743f3f4d92cfd024b85203b9f3d1c73a0046b9f4cc8c1c1804fb32d5&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2024-08-21T06:02:17.938Z"
             }
           }
         ]
@@ -9470,8 +9558,8 @@
             "name": "SFA팝업 수정 요청 (1).pptx",
             "type": "file",
             "file": {
-              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/335f2be5-3bd0-468a-91c1-5ab1f83b59c1/d80cc560-eead-416c-9482-0a5d9f88b0d2/SFA%ED%8C%9D%EC%97%85_%EC%88%98%EC%A0%95_%EC%9A%94%EC%B2%AD_%281%29.pptx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240801%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240801T052022Z&X-Amz-Expires=3600&X-Amz-Signature=3ddbe2b9e4f5c4b27e6a4c700560251be78b28d773992ce58fa466bf64d54cf1&X-Amz-SignedHeaders=host&x-id=GetObject",
-              "expiry_time": "2024-08-01T06:20:22.133Z"
+              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/335f2be5-3bd0-468a-91c1-5ab1f83b59c1/d80cc560-eead-416c-9482-0a5d9f88b0d2/SFA%ED%8C%9D%EC%97%85_%EC%88%98%EC%A0%95_%EC%9A%94%EC%B2%AD_%281%29.pptx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240821%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240821T050218Z&X-Amz-Expires=3600&X-Amz-Signature=40995b3e7e3238b3d392202ddeaae5ab7e16942f11bf3bdc5d3f81cb9b1e4ba7&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2024-08-21T06:02:17.940Z"
             }
           }
         ]
@@ -11250,14 +11338,14 @@
     "object": "page",
     "id": "5d6a5b6a-ba6f-4510-a5af-2a8c81541bb0",
     "created_time": "2024-07-22T23:24:00.000Z",
-    "last_edited_time": "2024-07-31T10:05:00.000Z",
+    "last_edited_time": "2024-08-05T07:54:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -11291,7 +11379,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -11303,7 +11391,7 @@
         "id": "cuoW",
         "type": "date",
         "date": {
-          "start": "2024-08-16",
+          "start": "2024-08-05",
           "end": null,
           "time_zone": null
         }
@@ -11312,9 +11400,9 @@
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=K}|",
-          "name": "대기",
-          "color": "default"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -11333,7 +11421,7 @@
               "link": null
             },
             "annotations": {
-              "bold": false,
+              "bold": true,
               "italic": false,
               "strikethrough": false,
               "underline": false,
@@ -11341,6 +11429,57 @@
               "color": "default"
             },
             "plain_text": "기한 : ~08.16",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "\n신규 CRM에 ZSD_SFA_APPROVE_BANFN RFC가 적용되어있지 않음,\n통합결재로 변경되면서 빠진 것 같은데 확인 후 기능추가 필요.\n",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "\n신규 CRM에 ZSD_SFA_APPROVE_BANFN RFC가 적용되어있지 않음,\n통합결재로 변경되면서 빠진 것 같은데 확인 후 기능추가 필요.\n",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "- 확인할 부분\n",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "- 확인할 부분\n",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "1. 어떤 시점에 호출되서 처리되는 지.\n2. 통합 결재로 변경됨에 따라 반품결재만 로직 상에서 추가 가능한지.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "1. 어떤 시점에 호출되서 처리되는 지.\n2. 통합 결재로 변경됨에 따라 반품결재만 로직 상에서 추가 가능한지.",
             "href": null
           }
         ]
@@ -11364,7 +11503,25 @@
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "2 H",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "2 H",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -11544,14 +11701,14 @@
     "object": "page",
     "id": "f6e8d34b-0b84-40ce-b475-8618d7c7285d",
     "created_time": "2024-07-22T06:57:00.000Z",
-    "last_edited_time": "2024-07-23T04:44:00.000Z",
+    "last_edited_time": "2024-08-01T23:23:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -11606,9 +11763,9 @@
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "AuZR",
-          "name": "개발완료",
-          "color": "green"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -11674,7 +11831,7 @@
           {
             "type": "text",
             "text": {
-              "content": " 정상 작동\n⇒ 스케쥴(SC_ADMIN_ORDER_TO_ERP) 작동 일자 변경해서 처리",
+              "content": " 정상 작동\n⇒ 스케쥴(SC_ADMIN_ORDER_TO_ERP) 작동 일자 변경해서 처리\n",
               "link": null
             },
             "annotations": {
@@ -11685,7 +11842,24 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": " 정상 작동\n⇒ 스케쥴(SC_ADMIN_ORDER_TO_ERP) 작동 일자 변경해서 처리",
+            "plain_text": " 정상 작동\n⇒ 스케쥴(SC_ADMIN_ORDER_TO_ERP) 작동 일자 변경해서 처리\n",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "⇒ 8월 2일 출근 후 바로 변경!! \n⇒ 1안  : 0 1/5 9-11 2, 12-31 * ?           ( 아침 출근하고 바로 변경가능 ) \n⇒ 2안 : 0 1/5 9-17 12-31 * ?               ( 11시 56분 이후 변경가능 )",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "red"
+            },
+            "plain_text": "⇒ 8월 2일 출근 후 바로 변경!! \n⇒ 1안  : 0 1/5 9-11 2, 12-31 * ?           ( 아침 출근하고 바로 변경가능 ) \n⇒ 2안 : 0 1/5 9-17 12-31 * ?               ( 11시 56분 이후 변경가능 )",
             "href": null
           }
         ]
@@ -13498,14 +13672,14 @@
     "object": "page",
     "id": "f5bb141a-f80c-4f38-90b9-17b1a30f272a",
     "created_time": "2024-07-19T02:01:00.000Z",
-    "last_edited_time": "2024-07-22T07:01:00.000Z",
+    "last_edited_time": "2024-08-16T09:49:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -13539,7 +13713,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -13550,15 +13724,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-08-16",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=`ki",
-          "name": "진행중",
-          "color": "yellow"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -13607,7 +13785,7 @@
           {
             "type": "text",
             "text": {
-              "content": "⇒ 화면 구조 개발완료, ",
+              "content": "⇒ 홈화면 구조 변경 개발/반영완료",
               "link": null
             },
             "annotations": {
@@ -13618,13 +13796,13 @@
               "code": false,
               "color": "green"
             },
-            "plain_text": "⇒ 화면 구조 개발완료, ",
+            "plain_text": "⇒ 홈화면 구조 변경 개발/반영완료",
             "href": null
           },
           {
             "type": "text",
             "text": {
-              "content": "\n1. isApp 처리 여부, 2. 자동로그인 여부 문의 필요.\n",
+              "content": "\n",
               "link": null
             },
             "annotations": {
@@ -13635,13 +13813,13 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "\n1. isApp 처리 여부, 2. 자동로그인 여부 문의 필요.\n",
+            "plain_text": "\n",
             "href": null
           },
           {
             "type": "text",
             "text": {
-              "content": "- 1인당 금액제한 관련 메모",
+              "content": "- 1인당 금액제한 관련 메모\n",
               "link": null
             },
             "annotations": {
@@ -13652,7 +13830,58 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "- 1인당 금액제한 관련 메모",
+            "plain_text": "- 1인당 금액제한 관련 메모\n",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "⇒ 요청한 메뉴 모두 적용 필요, 계산기 기능 옆에 체크박스 추가\n",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "⇒ 요청한 메뉴 모두 적용 필요, 계산기 기능 옆에 체크박스 추가\n",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "⇒ 개발서버 반영완료, 백송희 메일 전달하였음, 테스트 대기.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "⇒ 개발서버 반영완료, 백송희 메일 전달하였음, 테스트 대기.",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "\n⇒ 16일(금) 18시 이후 배포 및 테스트 요청.",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "red"
+            },
+            "plain_text": "\n⇒ 16일(금) 18시 이후 배포 및 테스트 요청.",
             "href": null
           }
         ]
@@ -13670,13 +13899,41 @@
             "person": {
               "email": "luneheart@beotech.com"
             }
+          },
+          {
+            "object": "user",
+            "id": "5d679a15-b5b4-4d07-908e-289eac58dfac",
+            "name": "조성우",
+            "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocKwpIA2DKUgjadSYCvzKlaD4BfoPOeSKWqnbAnvZKyQTLWz3Q=s100",
+            "type": "person",
+            "person": {
+              "email": "whtjddn1924@gmail.com"
+            }
           }
         ]
       },
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "4 H",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "4 H",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -19079,14 +19336,14 @@
     "object": "page",
     "id": "69fbb2e7-269c-40df-ac24-ceb7cd3807a2",
     "created_time": "2024-07-11T01:45:00.000Z",
-    "last_edited_time": "2024-07-28T23:46:00.000Z",
+    "last_edited_time": "2024-08-20T04:47:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
+      "id": "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85"
     },
     "cover": null,
     "icon": null,
@@ -19131,15 +19388,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-08-12",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=`ki",
-          "name": "진행중",
-          "color": "yellow"
+          "id": "=K}|",
+          "name": "대기",
+          "color": "default"
         }
       },
       "관련 파일": {
@@ -19154,7 +19415,7 @@
           {
             "type": "text",
             "text": {
-              "content": "1. ( 기존과 동일하게 주문저장 시 ) 저장처리 후 오류발생되는 품목 수동으로 제외하여 정상주문처리\n2. 제어품목 제외하여 정상주문 이후 1번과정에서 오류발생되어 제외한 품목을 재입력하여 동일메뉴 상에서 임시저장 버튼을 통해 임시저장 ( 비오테크 DB 저장 )\n3. 신규 개발 예정인 \"임시저장 주문조회\" 메뉴 상에서 임시저장 건들만 조회되도록 관리\n4. \"임시저장 주문조회\" 메뉴상에서 조회되는 임시저장 리스트들 상세조회 후 저장(주문)처리, ( 저장완료되면 삭제, 동일오류 시 그대로 유지되어 임시저장 목록에 조회되도록 )",
+              "content": "08.09(금), 1차 개발 완료 후, 개발서버에서 테스트 요청하였음.\n08.14(수), 품목 그리드에 체크박스를 두어 체크한 품목만 저장/임시저장 되게는 가능한지 재문의(변상윤), 해당 방향으로 문제없는 지 확인필요.",
               "link": null
             },
             "annotations": {
@@ -19165,7 +19426,7 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "1. ( 기존과 동일하게 주문저장 시 ) 저장처리 후 오류발생되는 품목 수동으로 제외하여 정상주문처리\n2. 제어품목 제외하여 정상주문 이후 1번과정에서 오류발생되어 제외한 품목을 재입력하여 동일메뉴 상에서 임시저장 버튼을 통해 임시저장 ( 비오테크 DB 저장 )\n3. 신규 개발 예정인 \"임시저장 주문조회\" 메뉴 상에서 임시저장 건들만 조회되도록 관리\n4. \"임시저장 주문조회\" 메뉴상에서 조회되는 임시저장 리스트들 상세조회 후 저장(주문)처리, ( 저장완료되면 삭제, 동일오류 시 그대로 유지되어 임시저장 목록에 조회되도록 )",
+            "plain_text": "08.09(금), 1차 개발 완료 후, 개발서버에서 테스트 요청하였음.\n08.14(수), 품목 그리드에 체크박스를 두어 체크한 품목만 저장/임시저장 되게는 가능한지 재문의(변상윤), 해당 방향으로 문제없는 지 확인필요.",
             "href": null
           }
         ]
@@ -21347,7 +21608,7 @@
     "object": "page",
     "id": "86a646b7-c4dc-42b5-be76-7de85dc88227",
     "created_time": "2024-07-08T07:58:00.000Z",
-    "last_edited_time": "2024-07-22T04:41:00.000Z",
+    "last_edited_time": "2024-08-16T06:55:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
@@ -21422,7 +21683,7 @@
           {
             "type": "text",
             "text": {
-              "content": "추가비용 발생 개발 건 - 이덕희 상무님이 견적서 전달\n→ 07.19 이덕희 상무님 견적서 전달완료, 개발 시작.\n→ 개발기간 3~4주 소요( ~08.09 )\n",
+              "content": "추가비용 발생 개발 건 - 이덕희 상무님이 견적서 전달\n→ 07.19 이덕희 상무님 견적서 전달완료, 개발 시작.\n→ 개발기간 3~4주 소요( ~08.09 )\n⇒ 07.22 아주약품 회신결과, 비용이슈로 인해 재검토 \n⇒ 08.06(화) 이덕희 상무님 재문의 결과, 아주약품측에서 개발형태를 결정X\n      관련하여 연락오면 알려준다고 함. - .. 과연",
               "link": null
             },
             "annotations": {
@@ -21431,15 +21692,15 @@
               "strikethrough": false,
               "underline": false,
               "code": false,
-              "color": "orange"
+              "color": "default"
             },
-            "plain_text": "추가비용 발생 개발 건 - 이덕희 상무님이 견적서 전달\n→ 07.19 이덕희 상무님 견적서 전달완료, 개발 시작.\n→ 개발기간 3~4주 소요( ~08.09 )\n",
+            "plain_text": "추가비용 발생 개발 건 - 이덕희 상무님이 견적서 전달\n→ 07.19 이덕희 상무님 견적서 전달완료, 개발 시작.\n→ 개발기간 3~4주 소요( ~08.09 )\n⇒ 07.22 아주약품 회신결과, 비용이슈로 인해 재검토 \n⇒ 08.06(화) 이덕희 상무님 재문의 결과, 아주약품측에서 개발형태를 결정X\n      관련하여 연락오면 알려준다고 함. - .. 과연",
             "href": null
           },
           {
             "type": "text",
             "text": {
-              "content": "⇒ 07.22 아주약품 회신결과, 비용이슈로 인해 재검토 ",
+              "content": "\n⇒ 08.06(화) 아주약품에 문의결과(내가) 오히려 아주에서 덕상 연락 대기중,……\n      상무님한테 상황 전달 후, 본인이 개발 형태 정해서 아주에 말한다고 함. \n      이후 다시 공유 해준다고 했는데,.. - ..과연",
               "link": null
             },
             "annotations": {
@@ -21450,7 +21711,7 @@
               "code": false,
               "color": "red"
             },
-            "plain_text": "⇒ 07.22 아주약품 회신결과, 비용이슈로 인해 재검토 ",
+            "plain_text": "\n⇒ 08.06(화) 아주약품에 문의결과(내가) 오히려 아주에서 덕상 연락 대기중,……\n      상무님한테 상황 전달 후, 본인이 개발 형태 정해서 아주에 말한다고 함. \n      이후 다시 공유 해준다고 했는데,.. - ..과연",
             "href": null
           }
         ]
@@ -25316,7 +25577,7 @@
     "object": "page",
     "id": "23ebfbc1-05cc-4e4e-9d5b-1f0c502a62f9",
     "created_time": "2024-07-03T07:10:00.000Z",
-    "last_edited_time": "2024-07-17T23:41:00.000Z",
+    "last_edited_time": "2024-08-06T23:55:00.000Z",
     "created_by": {
       "object": "user",
       "id": "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85"
@@ -25443,7 +25704,7 @@
               "strikethrough": false,
               "underline": false,
               "code": false,
-              "color": "red"
+              "color": "orange"
             },
             "plain_text": "전화해서 확인 해보삼",
             "href": null
@@ -29207,7 +29468,7 @@
     "object": "page",
     "id": "c0da1c40-18e0-44f8-826d-a554a3f62380",
     "created_time": "2024-07-01T06:24:00.000Z",
-    "last_edited_time": "2024-07-18T04:18:00.000Z",
+    "last_edited_time": "2024-08-16T06:55:00.000Z",
     "created_by": {
       "object": "user",
       "id": "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85"
@@ -29320,7 +29581,7 @@
           {
             "type": "text",
             "text": {
-              "content": "\n- 2024.07.16, [지출보고] 탭 개발완료, [실적현황] 탭 : 일병의 경우 완료, RFC 문의 중\n- 2024.07.18, RFC가 차트 구조 출력되도록 수정요청완료 및 로직개발완료",
+              "content": "\n- 2024.07.16, [지출보고] 탭 개발완료, [실적현황] 탭 : 일병의 경우 완료, RFC 문의 중\n- 2024.07.18, RFC가 차트 구조 출력되도록 수정요청완료 및 로직개발완료\n",
               "link": null
             },
             "annotations": {
@@ -29331,7 +29592,41 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "\n- 2024.07.16, [지출보고] 탭 개발완료, [실적현황] 탭 : 일병의 경우 완료, RFC 문의 중\n- 2024.07.18, RFC가 차트 구조 출력되도록 수정요청완료 및 로직개발완료",
+            "plain_text": "\n- 2024.07.16, [지출보고] 탭 개발완료, [실적현황] 탭 : 일병의 경우 완료, RFC 문의 중\n- 2024.07.18, RFC가 차트 구조 출력되도록 수정요청완료 및 로직개발완료\n",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "- 2024.08.07(수), RFC 조회구조가 어떻게 변경됬는 지 문의 필요",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default_background"
+            },
+            "plain_text": "- 2024.08.07(수), RFC 조회구조가 어떻게 변경됬는 지 문의 필요",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "\n- 2024.08.16(금), (백송희)일병/종병 RFC 개발 중, 2주 정도 걸릴 것으로 예상한다고 함",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "red"
+            },
+            "plain_text": "\n- 2024.08.16(금), (백송희)일병/종병 RFC 개발 중, 2주 정도 걸릴 것으로 예상한다고 함",
             "href": null
           }
         ]
