@@ -99,13 +99,14 @@ async function updateCompleteCountByEmp() {
         if (!notionCompleteCount[key2]) {
           notionCompleteCount[key2] = 0;
         }
-
         if (!completeCountInMonth[key2]) {
           completeCountInMonth[key2] = 0;
         }
-
         if (!progressCount[key2]) {
           progressCount[key2] = 0;
+        }
+        if (!toDoCompleteCount[key2]) {
+          toDoCompleteCount[key2] = 0;
         }
 
         notionCompleteCount[key2] += jsonData[key]["완료"][key2].value;
@@ -115,13 +116,14 @@ async function updateCompleteCountByEmp() {
         if (!notionCompleteCount[key2]) {
           notionCompleteCount[key2] = 0;
         }
-
         if (!completeCountInMonth[key2]) {
           completeCountInMonth[key2] = 0;
         }
-
         if (!progressCount[key2]) {
           progressCount[key2] = 0;
+        }
+        if (!toDoCompleteCount[key2]) {
+          toDoCompleteCount[key2] = 0;
         }
 
         progressCount[key2] += jsonData[key]["진행중"][key2].value;
@@ -149,7 +151,7 @@ async function updateCompleteCountByEmp() {
     // --------------- 기존 'To-do 처리완료' 데이터 불러오기 ---------------
     completeCountByEmp_Items.forEach((item) => {
       toDoCompleteCount[item.properties["사원"]?.people[0]?.id] =
-        item.properties["To-do 처리완료"].number;
+        item.properties["To-do 처리완료"]?.number ?? 0;
     });
     // -------------------------------------------------------------------
 
