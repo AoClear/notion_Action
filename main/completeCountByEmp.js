@@ -58,6 +58,7 @@ async function updateCompleteCountByEmp() {
           completeCountInMonth[empId] = 0;
           progressCount[empId] = 0;
           totalWorkTime[empId] = 0;
+          toDoCompleteCount[empId] = 0;
         }
 
         //헬프데스크 데이터베이스 '상태'속성
@@ -156,7 +157,6 @@ async function updateCompleteCountByEmp() {
     // -------------------------------------------------------------------
 
     await clearData(completeCountByEmp_Items);
-
     // ----- 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트 -----
     for (const empId in completeCountInMonth) {
       await notion.pages.create({
