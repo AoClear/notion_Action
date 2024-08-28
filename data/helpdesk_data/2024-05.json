@@ -13120,14 +13120,14 @@
     "object": "page",
     "id": "aaa53170-8903-4a7c-9899-f2287223762a",
     "created_time": "2024-05-17T02:10:00.000Z",
-    "last_edited_time": "2024-08-06T23:57:00.000Z",
+    "last_edited_time": "2024-08-27T08:52:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
+      "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb"
     },
     "cover": null,
     "icon": null,
@@ -13272,7 +13272,7 @@
           {
             "type": "text",
             "text": {
-              "content": "최종적으로 어떻게 된건지 덕상한테 확인필요.",
+              "content": "최종적으로 어떻게 된건지 이덕희 상무님 한테 확인필요.",
               "link": null
             },
             "annotations": {
@@ -13283,7 +13283,7 @@
               "code": false,
               "color": "orange"
             },
-            "plain_text": "최종적으로 어떻게 된건지 덕상한테 확인필요.",
+            "plain_text": "최종적으로 어떻게 된건지 이덕희 상무님 한테 확인필요.",
             "href": null
           }
         ]

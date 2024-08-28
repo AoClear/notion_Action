@@ -10,6 +10,7 @@ const { getAllDatabaseItems } = require("../util");
 const fs = require("fs").promises;
 const path = require("path");
 const moment = require("moment");
+var _ = require("lodash");
 
 // Notion API를 초기화합니다.
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
@@ -61,11 +62,10 @@ async function saveData() {
         return;
       }
 
-      if (!groupedData[createdDate]) {
-        groupedData[createdDate] = [];
-      }
-
-      groupedData[createdDate].push(item);
+      _.update(groupedData, createdDate, (existing = []) => {
+        existing.push(item);
+        return existing;
+      });
     });
 
     return groupedData;
@@ -86,6 +86,7 @@ async function updateStateCountDataByEmp() {
     const helpdeskDataFiles = await fs.readdir(helpdeskDataFolderPath);
 
     let newData = {};
+
     for (const file of helpdeskDataFiles) {
       const filePath = path.join(helpdeskDataFolderPath, file);
 
@@ -96,55 +97,41 @@ async function updateStateCountDataByEmp() {
 
           jsonData.forEach((item) => {
             const createdDate = moment(item.created_time).format("YYYY-MM");
-
-            // 날짜속성 초기화
-            if (!newData[createdDate]) {
-              newData[createdDate] = {};
-            }
-
-            // 작업시간 속성 초기화
-            if (!newData[createdDate]["작업시간"]) {
-              newData[createdDate]["작업시간"] = {};
-            }
-
-            // 상태속성 초기화
             const stateName = item.properties.상태?.select?.name;
-            if (!newData[createdDate][stateName]) {
-              newData[createdDate][stateName] = {};
-            }
+            const manager = item.properties.담당자?.people || [];
 
-            // 담당자(이름)속성 초기화
-            const manager = item.properties.담당자?.people;
-            for (let i = 0, len = manager.length; i < len; i++) {
-              const managerId = manager[i].id;
+            manager.forEach((m) => {
+              const managerId = m.id;
 
-              // 작업시간 속성의 속성 초기화
-              if (!newData[createdDate]["작업시간"][managerId]) {
-                newData[createdDate]["작업시간"][managerId] = {
-                  name: manager[i].name,
-                  value: 0,
-                };
-              }
+              // 상태 속성
+              _.update(
+                newData,
+                [createdDate, stateName, managerId],
+                (existing) => ({
+                  name: m.name,
+                  value: (existing?.value || 0) + 1,
+                })
+              );
 
-              // 상태 속성의 속성 초기화
-              if (!newData[createdDate][stateName][managerId]) {
-                newData[createdDate][stateName][managerId] = {
-                  name: manager[i].name,
-                  value: 0,
-                };
-              }
-
-              newData[createdDate][stateName][managerId].value++;
-              newData[createdDate]["작업시간"][managerId].value +=
-                parseFloat(
-                  item.properties.작업시간?.rich_text[0]?.plain_text.match(
-                    /[\d.]+/
-                  )?.[0]
-                ) || 0;
-            }
+              // 작업시간 속성
+              _.update(
+                newData,
+                [createdDate, "작업시간", managerId],
+                (existing) => ({
+                  name: m.name,
+                  value:
+                    (existing?.value || 0) +
+                      parseFloat(
+                        item.properties.작업시간?.rich_text[0]?.plain_text.match(
+                          /[\d.]+/
+                        )?.[0]
+                      ) || 0,
+                })
+              );
+            });
           });
         } catch (error) {
-          console.error(error);
+          console.error("Error processing file:", error);
         }
       }
     }
