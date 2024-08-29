@@ -62,6 +62,7 @@ async function saveData() {
         return;
       }
 
+      // 데이터를 년월 속성으로 구분
       _.update(groupedData, createdDate, (existing = []) => {
         existing.push(item);
         return existing;
