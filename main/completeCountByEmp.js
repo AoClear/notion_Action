@@ -32,11 +32,7 @@ async function updateCompleteCountByEmp() {
   try {
     await updateCompleteCountByEmp_Title();
 
-    const notionCompleteCount = {}; //Notion 처리완료
-    let completeCountInMonth = {}; //이번 달 처리완료 건
-    const progressCount = {}; //진행중 접수 건
-    const toDoCompleteCount = {}; //To-do 처리완료
-    const totalWorkTime = {}; //누적 작업시간
+    const data = {};
     // -------------------- 금월 완료 및 진행중 데이터 갯수 수집 --------------------
     helpDesk_Items.forEach((item) => {
       const manager = item.properties.담당자?.people;
@@ -51,30 +47,44 @@ async function updateCompleteCountByEmp() {
         return;
       }
 
+      const data = {};
       for (let i = 0, len = manager.length; i < len; i++) {
         const managerId = manager[i].id;
 
         //헬프데스크 데이터베이스 '상태'속성
         switch (item.properties.상태?.select?.name) {
           case "완료":
-            //'누적 처리완료 건' 증가
-            notionCompleteCount[managerId] =
-              (notionCompleteCount[managerId] || 0) + 1;
-            completeCountInMonth[managerId] =
-              (completeCountInMonth[managerId] || 0) + 1;
+            _.update(
+              data,
+              [managerId, "이번 달 처리완료 건"],
+              (value) => (value || 0) + 1
+            );
+            _.update(
+              data,
+              [managerId, "Notion 처리완료"],
+              (value) => (value || 0) + 1
+            );
             break;
           case "진행중":
-            progressCount[managerId] = (progressCount[managerId] || 0) + 1;
+            _.update(
+              data,
+              [managerId, "진행중 접수 건"],
+              (value) => (value || 0) + 1
+            );
             break;
         }
 
-        totalWorkTime[managerId] =
-          (totalWorkTime[managerId] || 0) +
-            parseFloat(
-              item.properties.작업시간?.rich_text[0]?.plain_text.match(
-                /[\d.]+/
-              )?.[0]
-            ) || 0;
+        _.update(
+          data,
+          [managerId, "누적 작업시간"],
+          (value) =>
+            (value || 0) +
+              parseFloat(
+                item.properties.작업시간?.rich_text[0]?.plain_text.match(
+                  /[\d.]+/
+                )?.[0]
+              ) || 0
+        );
       }
     });
     // ----------------------------------------------------------------------
@@ -93,52 +103,78 @@ async function updateCompleteCountByEmp() {
 
     for (let key in jsonData) {
       for (let key2 in jsonData[key]["완료"]) {
-        notionCompleteCount[key2] =
-          (notionCompleteCount[key2] || 0) + jsonData[key]["완료"][key2].value;
+        _.update(
+          data,
+          [key2, "Notion 처리완료"],
+          (value) => (value || 0) + jsonData[key]["완료"][key2].value
+        );
       }
 
       for (let key2 in jsonData[key]["진행중"]) {
-        progressCount[key2] =
-          (progressCount[key2] || 0) + jsonData[key]["진행중"][key2].value;
+        _.update(
+          data,
+          [key2, "진행중 접수 건"],
+          (value) => (value || 0) + jsonData[key]["진행중"][key2].value
+        );
       }
 
       for (let key2 in jsonData[key]["작업시간"]) {
-        totalWorkTime[key2] =
-          (totalWorkTime[key2] || 0) + jsonData[key]["작업시간"][key2].value;
+        _.update(
+          data,
+          [key2, "누적 작업시간"],
+          (value) => (value || 0) + jsonData[key]["작업시간"][key2].value
+        );
       }
     }
     // ------------------------------------------------------------------------
 
-    // -------------------------- 정렬(오름차순) --------------------------
-    // 이번 달 처리완료 순으로 정렬
-    completeCountInMonth = Object.fromEntries(
-      Object.entries(completeCountInMonth).sort(
-        ([, countA], [, countB]) => countA - countB
-      )
-    );
-    // --------------------------------------------------------------------
-
     // --------------- 기존 'To-do 처리완료' 데이터 불러오기 ---------------
     completeCountByEmp_Items.forEach((item) => {
-      toDoCompleteCount[item.properties["사원"]?.people[0]?.id] =
-        item.properties["To-do 처리완료"]?.number ?? 0;
+      _.set(
+        data,
+        [item.properties["사원"]?.people[0]?.id, "To-do 처리완료"],
+        item.properties["To-do 처리완료"]?.number ?? 0
+      );
     });
     // -------------------------------------------------------------------
 
+    // -------------------------- 정렬(오름차순) --------------------------
+    // 1. data 객체를 배열로 변환
+    const entries = Object.entries(data);
+
+    // 2. 배열을 "이번 달 처리완료 건" 기준으로 오름차순으로 정렬
+    const sortedEntries = entries.sort(([keyA, valueA], [keyB, valueB]) => {
+      return (
+        (valueA["이번 달 처리완료 건"] || 0) -
+        (valueB["이번 달 처리완료 건"] || 0)
+      );
+    });
+    // --------------------------------------------------------------------
+
     await clearData(completeCountByEmp_Items);
+
+    console.log(sortedEntries);
     // ----- 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트 -----
-    for (const managerId in completeCountInMonth) {
+    for (const [managerId, info] of sortedEntries) {
       await notion.pages.create({
         parent: { database_id: completeCountByEmp_Id },
         properties: {
           사원: { people: [{ id: managerId }] },
           "이번 달 처리완료 건": {
-            number: completeCountInMonth[managerId] || 0,
+            number: _.get(info, "이번 달 처리완료 건", 0),
           },
-          "Notion 처리완료": { number: notionCompleteCount[managerId] || 0 },
-          "진행중 접수 건": { number: progressCount[managerId] || 0 },
-          "To-do 처리완료": { number: toDoCompleteCount[managerId] || 0 },
-          "누적 작업시간": { number: totalWorkTime[managerId] || 0 },
+          "Notion 처리완료": {
+            number: _.get(info, "Notion 처리완료", 0),
+          },
+          "진행중 접수 건": {
+            number: _.get(info, "진행중 접수 건", 0),
+          },
+          "To-do 처리완료": {
+            number: _.get(info, "To-do 처리완료", 0),
+          },
+          "누적 작업시간": {
+            number: _.get(info, "누적 작업시간", 0),
+          },
         },
       });
     }

@@ -114,20 +114,32 @@ async function updateStateCountDataByEmp() {
                 })
               );
 
+              if (m.name == "황재호") {
+                console.log(
+                  parseFloat(
+                    item.properties.작업시간?.rich_text[0]?.plain_text.match(
+                      /[\d.]+/
+                    )?.[0]
+                  )
+                );
+              }
               // 작업시간 속성
               _.update(
                 newData,
                 [createdDate, "작업시간", managerId],
-                (existing) => ({
-                  name: m.name,
-                  value:
-                    (existing?.value || 0) +
-                      parseFloat(
-                        item.properties.작업시간?.rich_text[0]?.plain_text.match(
-                          /[\d.]+/
-                        )?.[0]
-                      ) || 0,
-                })
+                (existing) => {
+                  // 작업시간 추출
+                  const timeString =
+                    item.properties.작업시간?.rich_text[0]?.plain_text.match(
+                      /[\d.]+/
+                    )?.[0];
+                  const timeValue = timeString ? parseFloat(timeString) : 0; // NaN이 아닌 경우에만 값을 사용
+
+                  return {
+                    name: m.name,
+                    value: (existing?.value || 0) + timeValue,
+                  };
+                }
               );
             });
           });

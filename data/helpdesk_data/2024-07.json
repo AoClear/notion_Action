@@ -9423,8 +9423,8 @@
             "name": "이관 요청 방문율 메뉴 (2).pptx",
             "type": "file",
             "file": {
-              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/335f2be5-3bd0-468a-91c1-5ab1f83b59c1/712d93b6-37ea-4b9d-8eb7-d80b10539829/%EC%9D%B4%EA%B4%80_%EC%9A%94%EC%B2%AD_%EB%B0%A9%EB%AC%B8%EC%9C%A8_%EB%A9%94%EB%89%B4_%282%29.pptx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240830%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240830T065612Z&X-Amz-Expires=3600&X-Amz-Signature=5642872e777f3bc4281fe05b60bfba6df3b260572a9fcaf727ee41abb1e101a3&X-Amz-SignedHeaders=host&x-id=GetObject",
-              "expiry_time": "2024-08-30T07:56:12.030Z"
+              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/335f2be5-3bd0-468a-91c1-5ab1f83b59c1/712d93b6-37ea-4b9d-8eb7-d80b10539829/%EC%9D%B4%EA%B4%80_%EC%9A%94%EC%B2%AD_%EB%B0%A9%EB%AC%B8%EC%9C%A8_%EB%A9%94%EB%89%B4_%282%29.pptx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240902%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240902T010434Z&X-Amz-Expires=3600&X-Amz-Signature=cefeed3963cb2571d59347458eddaa6278d6a40f37413fe84fc5a1b2549cf99f&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2024-09-02T02:04:34.594Z"
             }
           }
         ]
@@ -9579,8 +9579,8 @@
             "name": "SFA팝업 수정 요청 (1).pptx",
             "type": "file",
             "file": {
-              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/335f2be5-3bd0-468a-91c1-5ab1f83b59c1/d80cc560-eead-416c-9482-0a5d9f88b0d2/SFA%ED%8C%9D%EC%97%85_%EC%88%98%EC%A0%95_%EC%9A%94%EC%B2%AD_%281%29.pptx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240830%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240830T065612Z&X-Amz-Expires=3600&X-Amz-Signature=528b1866dcebe6550d3a4fcce1382490ba068a140779f9d4e19a77a65b74a3af&X-Amz-SignedHeaders=host&x-id=GetObject",
-              "expiry_time": "2024-08-30T07:56:12.031Z"
+              "url": "https://prod-files-secure.s3.us-west-2.amazonaws.com/335f2be5-3bd0-468a-91c1-5ab1f83b59c1/d80cc560-eead-416c-9482-0a5d9f88b0d2/SFA%ED%8C%9D%EC%97%85_%EC%88%98%EC%A0%95_%EC%9A%94%EC%B2%AD_%281%29.pptx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240902%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240902T010434Z&X-Amz-Expires=3600&X-Amz-Signature=5da1ee9a170131eb5ad6a2e98ff485eb7e14909366fd5fff7f3725cc71694f3e&X-Amz-SignedHeaders=host&x-id=GetObject",
+              "expiry_time": "2024-09-02T02:04:34.595Z"
             }
           }
         ]
