@@ -47,7 +47,6 @@ async function updateCompleteCountByEmp() {
         return;
       }
 
-      const data = {};
       for (let i = 0, len = manager.length; i < len; i++) {
         const managerId = manager[i].id;
 
@@ -59,6 +58,7 @@ async function updateCompleteCountByEmp() {
               [managerId, "이번 달 처리완료 건"],
               (value) => (value || 0) + 1
             );
+
             _.update(
               data,
               [managerId, "Notion 처리완료"],
@@ -73,7 +73,6 @@ async function updateCompleteCountByEmp() {
             );
             break;
         }
-
         _.update(
           data,
           [managerId, "누적 작업시간"],
@@ -138,6 +137,7 @@ async function updateCompleteCountByEmp() {
     });
     // -------------------------------------------------------------------
 
+    console.log(data);
     // -------------------------- 정렬(오름차순) --------------------------
     // 1. data 객체를 배열로 변환
     const entries = Object.entries(data);
@@ -153,7 +153,6 @@ async function updateCompleteCountByEmp() {
 
     await clearData(completeCountByEmp_Items);
 
-    console.log(sortedEntries);
     // ----- 새로운 값으로 "사원별 처리완료 건" 데이터베이스를 업데이트 -----
     for (const [managerId, info] of sortedEntries) {
       await notion.pages.create({
