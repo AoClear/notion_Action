@@ -137,7 +137,6 @@ async function updateCompleteCountByEmp() {
     });
     // -------------------------------------------------------------------
 
-    console.log(data);
     // -------------------------- 정렬(오름차순) --------------------------
     // 1. data 객체를 배열로 변환
     const entries = Object.entries(data);
