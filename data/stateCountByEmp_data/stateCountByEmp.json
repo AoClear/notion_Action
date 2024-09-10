@@ -107,7 +107,7 @@
     "대기": {
       "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
         "name": "윤창은",
-        "value": 2
+        "value": 1
       }
     }
   },
@@ -115,7 +115,7 @@
     "완료": {
       "64404aa5-3dae-461e-adda-11d6c30f1b81": {
         "name": "김홍",
-        "value": 62
+        "value": 63
       },
       "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
         "name": "윤창은",
@@ -131,13 +131,17 @@
       },
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
-        "value": 19
+        "value": 20
+      },
+      "09928bc6-7e48-4aab-a477-88d8a783dc32": {
+        "name": "윤희 나",
+        "value": 1
       }
     },
     "작업시간": {
       "64404aa5-3dae-461e-adda-11d6c30f1b81": {
         "name": "김홍",
-        "value": 83
+        "value": 91
       },
       "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
         "name": "윤창은",
@@ -153,11 +157,11 @@
       },
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
-        "value": 14.5
+        "value": 23.5
       },
       "09928bc6-7e48-4aab-a477-88d8a783dc32": {
         "name": "윤희 나",
-        "value": 0
+        "value": 2
       }
     },
     "진행중": {
@@ -183,10 +187,6 @@
         "name": "임연주",
         "value": 2
       },
-      "09928bc6-7e48-4aab-a477-88d8a783dc32": {
-        "name": "윤희 나",
-        "value": 1
-      },
       "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
         "name": "윤창은",
         "value": 1
@@ -195,11 +195,7 @@
     "개발완료": {
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
-        "value": 4
-      },
-      "64404aa5-3dae-461e-adda-11d6c30f1b81": {
-        "name": "김홍",
-        "value": 1
+        "value": 3
       }
     }
   },
@@ -211,19 +207,19 @@
       },
       "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
         "name": "임연주",
-        "value": 37
+        "value": 39
       },
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
-        "value": 21
+        "value": 22
+      },
+      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
+        "name": "윤창은",
+        "value": 36
       },
       "5d679a15-b5b4-4d07-908e-289eac58dfac": {
         "name": "조성우",
         "value": 4
-      },
-      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
-        "name": "윤창은",
-        "value": 34
       }
     },
     "작업시간": {
@@ -233,24 +229,28 @@
       },
       "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
         "name": "임연주",
-        "value": 36.5
+        "value": 39
       },
       "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
         "name": "황재호",
-        "value": 16.5
+        "value": 17.5
+      },
+      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
+        "name": "윤창은",
+        "value": 21
       },
       "5d679a15-b5b4-4d07-908e-289eac58dfac": {
         "name": "조성우",
         "value": 4.5
-      },
-      "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
-        "name": "윤창은",
-        "value": 20
       }
     },
     "개발완료": {
       "64404aa5-3dae-461e-adda-11d6c30f1b81": {
         "name": "김홍",
+        "value": 1
+      },
+      "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
+        "name": "황재호",
         "value": 1
       }
     },
@@ -265,17 +265,13 @@
       }
     },
     "진행중": {
-      "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
-        "name": "황재호",
-        "value": 3
-      },
       "ab96df30-9b33-4c24-bf66-3fc393d82fdb": {
         "name": "윤창은",
-        "value": 2
+        "value": 1
       },
       "32eaf579-42a2-4e85-b4ad-e57d56126b95": {
         "name": "임연주",
-        "value": 3
+        "value": 2
       },
       "64404aa5-3dae-461e-adda-11d6c30f1b81": {
         "name": "김홍",
@@ -283,6 +279,10 @@
       },
       "5d679a15-b5b4-4d07-908e-289eac58dfac": {
         "name": "조성우",
+        "value": 1
+      },
+      "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": {
+        "name": "황재호",
         "value": 1
       }
     }

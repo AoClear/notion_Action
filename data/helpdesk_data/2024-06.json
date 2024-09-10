@@ -9464,14 +9464,14 @@
     "object": "page",
     "id": "cd96afb2-d67f-41f0-8b2b-f81bfe50d933",
     "created_time": "2024-06-19T00:04:00.000Z",
-    "last_edited_time": "2024-08-29T07:42:00.000Z",
+    "last_edited_time": "2024-09-09T02:58:00.000Z",
     "created_by": {
       "object": "user",
       "id": "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
+      "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb"
     },
     "cover": null,
     "icon": null,
@@ -9592,18 +9592,7 @@
       "담당자": {
         "id": "tQc%7D",
         "type": "people",
-        "people": [
-          {
-            "object": "user",
-            "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb",
-            "name": "윤창은",
-            "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocJkrrodSzNSPlk8JvbrUFeoS5Y70VA-9QcJtpS2oc1a_GWQ1g=s100",
-            "type": "person",
-            "person": {
-              "email": "ckddms9527@gmail.com"
-            }
-          }
-        ]
+        "people": []
       },
       "작업시간": {
         "id": "xdSK",

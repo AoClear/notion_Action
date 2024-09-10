@@ -3,14 +3,14 @@
     "object": "page",
     "id": "6a948f31-0cfc-4643-bd31-091df3fa92e8",
     "created_time": "2024-08-30T07:54:00.000Z",
-    "last_edited_time": "2024-08-30T08:12:00.000Z",
+    "last_edited_time": "2024-09-03T05:39:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "00000000-0000-0000-0000-000000000003"
+      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "cover": null,
     "icon": null,
@@ -78,25 +78,7 @@
       "메모": {
         "id": "lKo%7B",
         "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "저번에 추가하라고 했는데 안함. 이자식 답변내용 안읽음 ㅡㅡ",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "저번에 추가하라고 했는데 안함. 이자식 답변내용 안읽음 ㅡㅡ",
-            "href": null
-          }
-        ]
+        "rich_text": []
       },
       "담당자": {
         "id": "tQc%7D",
@@ -315,14 +297,14 @@
     "object": "page",
     "id": "027864e4-6f86-461b-b65e-5393467ff955",
     "created_time": "2024-08-30T07:54:00.000Z",
-    "last_edited_time": "2024-09-01T23:36:00.000Z",
+    "last_edited_time": "2024-09-05T00:00:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "32eaf579-42a2-4e85-b4ad-e57d56126b95"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -356,7 +338,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -367,15 +349,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-09-04",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=K}|",
-          "name": "대기",
-          "color": "default"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -390,7 +376,7 @@
           {
             "type": "text",
             "text": {
-              "content": "전화 안받는데",
+              "content": "전화 안받는데 ",
               "link": null
             },
             "annotations": {
@@ -401,7 +387,7 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "전화 안받는데",
+            "plain_text": "전화 안받는데 ",
             "href": null
           }
         ]
@@ -409,12 +395,41 @@
       "담당자": {
         "id": "tQc%7D",
         "type": "people",
-        "people": []
+        "people": [
+          {
+            "object": "user",
+            "id": "32eaf579-42a2-4e85-b4ad-e57d56126b95",
+            "name": "임연주",
+            "avatar_url": "https://lh3.googleusercontent.com/a/AATXAJxnidJBuUbKUQAed_S-W-gnQOwSjF0luryDlwSS=s100",
+            "type": "person",
+            "person": {
+              "email": "yeonju461225@gmail.com"
+            }
+          }
+        ]
       },
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "1.5",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "1.5",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -1002,7 +1017,7 @@
     "object": "page",
     "id": "775bc15f-2ff6-4630-96c4-cedfdfe5eef2",
     "created_time": "2024-08-29T23:06:00.000Z",
-    "last_edited_time": "2024-08-29T23:06:00.000Z",
+    "last_edited_time": "2024-09-06T12:22:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
@@ -1043,7 +1058,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -1054,15 +1069,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-09-06",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=K}|",
-          "name": "대기",
-          "color": "default"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -1078,12 +1097,41 @@
       "담당자": {
         "id": "tQc%7D",
         "type": "people",
-        "people": []
+        "people": [
+          {
+            "object": "user",
+            "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb",
+            "name": "윤창은",
+            "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocJkrrodSzNSPlk8JvbrUFeoS5Y70VA-9QcJtpS2oc1a_GWQ1g=s100",
+            "type": "person",
+            "person": {
+              "email": "ckddms9527@gmail.com"
+            }
+          }
+        ]
       },
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "0.5",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "0.5",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -1116,14 +1164,14 @@
     "object": "page",
     "id": "6a975cbf-b90a-49c9-8d2e-3888e6f2b344",
     "created_time": "2024-08-29T07:10:00.000Z",
-    "last_edited_time": "2024-08-29T07:22:00.000Z",
+    "last_edited_time": "2024-09-03T05:39:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "32eaf579-42a2-4e85-b4ad-e57d56126b95"
+      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "cover": null,
     "icon": null,
@@ -1212,7 +1260,7 @@
           {
             "type": "text",
             "text": {
-              "content": "나",
+              "content": "나 - 임연주 최악",
               "link": null
             },
             "annotations": {
@@ -1223,7 +1271,7 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "나",
+            "plain_text": "나 - 임연주 최악",
             "href": null
           }
         ]
@@ -4314,14 +4362,14 @@
     "object": "page",
     "id": "59a2a854-07c9-4498-8419-a0fc6e353da1",
     "created_time": "2024-08-26T02:31:00.000Z",
-    "last_edited_time": "2024-08-30T07:40:00.000Z",
+    "last_edited_time": "2024-09-05T00:43:00.000Z",
     "created_by": {
       "object": "user",
       "id": "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -4355,7 +4403,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -4366,15 +4414,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-09-05",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=`ki",
-          "name": "진행중",
-          "color": "yellow"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -4406,7 +4458,25 @@
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "1 H",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "1 H",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -4727,90 +4797,6 @@
       }
     },
     "url": "https://www.notion.so/91874573197a4d5ba96545bfa6cb9259",
-    "public_url": null
-  },
-  {
-    "object": "page",
-    "id": "36580504-b54f-48e2-9500-d3d58f9840b7",
-    "created_time": "2024-08-23T07:52:00.000Z",
-    "last_edited_time": "2024-08-23T07:52:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "32eaf579-42a2-4e85-b4ad-e57d56126b95"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "32eaf579-42a2-4e85-b4ad-e57d56126b95"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "6fdb7f88-15ab-4360-a497-c4dec803bf39"
-    },
-    "archived": false,
-    "in_trash": false,
-    "properties": {
-      "접수일": {
-        "id": "HR%7DD",
-        "type": "date",
-        "date": null
-      },
-      "고객사": {
-        "id": "RFY%3C",
-        "type": "select",
-        "select": null
-      },
-      "완료체크": {
-        "id": "SR%3AZ",
-        "type": "formula",
-        "formula": {
-          "type": "boolean",
-          "boolean": false
-        }
-      },
-      "생성 일시": {
-        "id": "YASZ",
-        "type": "created_time",
-        "created_time": "2024-08-23T07:52:00.000Z"
-      },
-      "완료일": {
-        "id": "cuoW",
-        "type": "date",
-        "date": null
-      },
-      "상태": {
-        "id": "hhAK",
-        "type": "select",
-        "select": null
-      },
-      "관련 파일": {
-        "id": "iPk%3B",
-        "type": "files",
-        "files": []
-      },
-      "메모": {
-        "id": "lKo%7B",
-        "type": "rich_text",
-        "rich_text": []
-      },
-      "담당자": {
-        "id": "tQc%7D",
-        "type": "people",
-        "people": []
-      },
-      "작업시간": {
-        "id": "xdSK",
-        "type": "rich_text",
-        "rich_text": []
-      },
-      "제목": {
-        "id": "title",
-        "type": "title",
-        "title": []
-      }
-    },
-    "url": "https://www.notion.so/36580504b54f48e29500d3d58f9840b7",
     "public_url": null
   },
   {
@@ -8929,7 +8915,7 @@
     "object": "page",
     "id": "f4b43c40-dc17-42e3-8b7f-92f3f12a76e8",
     "created_time": "2024-08-20T02:36:00.000Z",
-    "last_edited_time": "2024-08-27T23:59:00.000Z",
+    "last_edited_time": "2024-09-02T04:38:00.000Z",
     "created_by": {
       "object": "user",
       "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
@@ -8970,7 +8956,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -8987,9 +8973,9 @@
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=`ki",
-          "name": "진행중",
-          "color": "yellow"
+          "id": "AuZR",
+          "name": "개발완료",
+          "color": "green"
         }
       },
       "관련 파일": {
@@ -9048,90 +9034,6 @@
       }
     },
     "url": "https://www.notion.so/f4b43c40dc1742e38b7f92f3f12a76e8",
-    "public_url": null
-  },
-  {
-    "object": "page",
-    "id": "e1c5afe8-60de-43f2-880d-7501bf88fce7",
-    "created_time": "2024-08-20T02:36:00.000Z",
-    "last_edited_time": "2024-08-20T02:36:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "6fdb7f88-15ab-4360-a497-c4dec803bf39"
-    },
-    "archived": false,
-    "in_trash": false,
-    "properties": {
-      "접수일": {
-        "id": "HR%7DD",
-        "type": "date",
-        "date": null
-      },
-      "고객사": {
-        "id": "RFY%3C",
-        "type": "select",
-        "select": null
-      },
-      "완료체크": {
-        "id": "SR%3AZ",
-        "type": "formula",
-        "formula": {
-          "type": "boolean",
-          "boolean": false
-        }
-      },
-      "생성 일시": {
-        "id": "YASZ",
-        "type": "created_time",
-        "created_time": "2024-08-20T02:36:00.000Z"
-      },
-      "완료일": {
-        "id": "cuoW",
-        "type": "date",
-        "date": null
-      },
-      "상태": {
-        "id": "hhAK",
-        "type": "select",
-        "select": null
-      },
-      "관련 파일": {
-        "id": "iPk%3B",
-        "type": "files",
-        "files": []
-      },
-      "메모": {
-        "id": "lKo%7B",
-        "type": "rich_text",
-        "rich_text": []
-      },
-      "담당자": {
-        "id": "tQc%7D",
-        "type": "people",
-        "people": []
-      },
-      "작업시간": {
-        "id": "xdSK",
-        "type": "rich_text",
-        "rich_text": []
-      },
-      "제목": {
-        "id": "title",
-        "type": "title",
-        "title": []
-      }
-    },
-    "url": "https://www.notion.so/e1c5afe860de43f2880d7501bf88fce7",
     "public_url": null
   },
   {
@@ -12235,14 +12137,14 @@
     "object": "page",
     "id": "7f2c1490-4bc6-45b1-8976-a77dc669699a",
     "created_time": "2024-08-14T04:30:00.000Z",
-    "last_edited_time": "2024-08-28T00:24:00.000Z",
+    "last_edited_time": "2024-09-05T00:04:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -12276,7 +12178,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -12287,15 +12189,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-09-05",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=`ki",
-          "name": "진행중",
-          "color": "yellow"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -12345,7 +12251,25 @@
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "1",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "1",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -13606,14 +13530,14 @@
     "object": "page",
     "id": "4fdcdc75-0da4-48f3-a31f-a30740048372",
     "created_time": "2024-08-13T04:54:00.000Z",
-    "last_edited_time": "2024-08-13T23:27:00.000Z",
+    "last_edited_time": "2024-09-03T05:40:00.000Z",
     "created_by": {
       "object": "user",
       "id": "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "00000000-0000-0000-0000-000000000003"
+      "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "cover": null,
     "icon": null,
@@ -13677,25 +13601,7 @@
       "메모": {
         "id": "lKo%7B",
         "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "이런 개꿀",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "이런 개꿀",
-            "href": null
-          }
-        ]
+        "rich_text": []
       },
       "담당자": {
         "id": "tQc%7D",
@@ -15634,14 +15540,14 @@
     "object": "page",
     "id": "8c54408d-23e8-42a3-9a7e-bf0049a5bb10",
     "created_time": "2024-08-11T23:07:00.000Z",
-    "last_edited_time": "2024-08-26T06:31:00.000Z",
+    "last_edited_time": "2024-09-04T02:25:00.000Z",
     "created_by": {
       "object": "user",
       "id": "64404aa5-3dae-461e-adda-11d6c30f1b81"
     },
     "last_edited_by": {
       "object": "user",
-      "id": "ab96df30-9b33-4c24-bf66-3fc393d82fdb"
+      "id": "00000000-0000-0000-0000-000000000003"
     },
     "cover": null,
     "icon": null,
@@ -15675,7 +15581,7 @@
         "type": "formula",
         "formula": {
           "type": "boolean",
-          "boolean": false
+          "boolean": true
         }
       },
       "생성 일시": {
@@ -15686,15 +15592,19 @@
       "완료일": {
         "id": "cuoW",
         "type": "date",
-        "date": null
+        "date": {
+          "start": "2024-09-04",
+          "end": null,
+          "time_zone": null
+        }
       },
       "상태": {
         "id": "hhAK",
         "type": "select",
         "select": {
-          "id": "=`ki",
-          "name": "진행중",
-          "color": "yellow"
+          "id": "v^B|",
+          "name": "완료",
+          "color": "blue"
         }
       },
       "관련 파일": {
@@ -15726,7 +15636,25 @@
       "작업시간": {
         "id": "xdSK",
         "type": "rich_text",
-        "rich_text": []
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "0.5",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "0.5",
+            "href": null
+          }
+        ]
       },
       "제목": {
         "id": "title",
@@ -19568,94 +19496,6 @@
       }
     },
     "url": "https://www.notion.so/CRM-370fb6c91e9143bf97db35d06efc31a8",
-    "public_url": null
-  },
-  {
-    "object": "page",
-    "id": "ea9122a5-c331-4fe1-a581-10f19e941aa5",
-    "created_time": "2024-08-05T01:49:00.000Z",
-    "last_edited_time": "2024-08-05T01:49:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "5d679a15-b5b4-4d07-908e-289eac58dfac"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "00000000-0000-0000-0000-000000000003"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "6fdb7f88-15ab-4360-a497-c4dec803bf39"
-    },
-    "archived": false,
-    "in_trash": false,
-    "properties": {
-      "접수일": {
-        "id": "HR%7DD",
-        "type": "date",
-        "date": null
-      },
-      "고객사": {
-        "id": "RFY%3C",
-        "type": "select",
-        "select": null
-      },
-      "완료체크": {
-        "id": "SR%3AZ",
-        "type": "formula",
-        "formula": {
-          "type": "boolean",
-          "boolean": true
-        }
-      },
-      "생성 일시": {
-        "id": "YASZ",
-        "type": "created_time",
-        "created_time": "2024-08-05T01:49:00.000Z"
-      },
-      "완료일": {
-        "id": "cuoW",
-        "type": "date",
-        "date": null
-      },
-      "상태": {
-        "id": "hhAK",
-        "type": "select",
-        "select": {
-          "id": "v^B|",
-          "name": "완료",
-          "color": "blue"
-        }
-      },
-      "관련 파일": {
-        "id": "iPk%3B",
-        "type": "files",
-        "files": []
-      },
-      "메모": {
-        "id": "lKo%7B",
-        "type": "rich_text",
-        "rich_text": []
-      },
-      "담당자": {
-        "id": "tQc%7D",
-        "type": "people",
-        "people": []
-      },
-      "작업시간": {
-        "id": "xdSK",
-        "type": "rich_text",
-        "rich_text": []
-      },
-      "제목": {
-        "id": "title",
-        "type": "title",
-        "title": []
-      }
-    },
-    "url": "https://www.notion.so/ea9122a5c3314fe1a58110f19e941aa5",
     "public_url": null
   },
   {

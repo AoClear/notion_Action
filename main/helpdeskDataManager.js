@@ -114,15 +114,6 @@ async function updateStateCountDataByEmp() {
                 })
               );
 
-              if (m.name == "황재호") {
-                console.log(
-                  parseFloat(
-                    item.properties.작업시간?.rich_text[0]?.plain_text.match(
-                      /[\d.]+/
-                    )?.[0]
-                  )
-                );
-              }
               // 작업시간 속성
               _.update(
                 newData,
