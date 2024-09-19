@@ -149,19 +149,16 @@ async function updateProcessingStatus() {
         color: "green_background",
       },
     });
-
-    console.log("ProcessingStatus updated successfully.");
   } catch (error) {
-    console.error("Error updating processingStatus:", error);
+    console.error(error);
   }
 }
 
 async function run() {
   try {
     await updateProcessingStatus();
-    console.log("ProcessingStatus run successfully.");
   } catch (error) {
-    console.error("Error processingStatus run status:", error);
+    console.error(error);
   }
 }
 

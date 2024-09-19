@@ -135,7 +135,7 @@ async function updateStateCountDataByEmp() {
             });
           });
         } catch (error) {
-          console.error("Error processing file:", error);
+          console.error(error);
         }
       }
     }
@@ -143,7 +143,7 @@ async function updateStateCountDataByEmp() {
     // 업데이트된 데이터 저장
     await saveDataToFile(newData, fullFolderPath, fileName);
   } catch (error) {
-    console.error("Error updating state count data:", error);
+    console.error(error);
   }
 }
 
@@ -157,7 +157,7 @@ async function saveDataToFile(data, folderPath, fileName) {
     // JSON 데이터를 문자열로 변환하고 파일에 저장
     await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
   } catch (error) {
-    console.error("Error saving data to file:", error);
+    console.error(error);
     throw error;
   }
 }
