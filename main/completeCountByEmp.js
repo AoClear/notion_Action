@@ -196,7 +196,7 @@ async function updateCompleteCountByEmp() {
       case "64404aa5-3dae-461e-adda-11d6c30f1b81": // 김홍
         result = 674;
         break;
-      case "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": // 김홍
+      case "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": // 황재호
         result = 303;
         break;
       default:
