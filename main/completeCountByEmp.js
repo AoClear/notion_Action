@@ -173,12 +173,38 @@ async function updateCompleteCountByEmp() {
           "누적 작업시간": {
             number: _.get(info, "누적 작업시간", 0),
           },
+          "To-do 처리완료": {
+            number: todoCompleteCountById(managerId),
+          },
         },
       });
     }
     //-----------------------------------------------------------------
   } catch (error) {
     console.error(error);
+  }
+
+  function todoCompleteCountById(id) {
+    let result = 0;
+    switch (id) {
+      case "ab96df30-9b33-4c24-bf66-3fc393d82fdb": // 윤창은
+        result = 470;
+        break;
+      case "32eaf579-42a2-4e85-b4ad-e57d56126b95": // 임연주
+        result = 633;
+        break;
+      case "64404aa5-3dae-461e-adda-11d6c30f1b81": // 김홍
+        result = 674;
+        break;
+      case "bb4dc3f9-48b3-4357-a5e1-7a517f44ef85": // 김홍
+        result = 303;
+        break;
+      default:
+        result = 0;
+        break;
+    }
+
+    return result;
   }
 
   // "사원별 처리완료 건" 데이터베이스의 제목을 금월에 맞게 수정
